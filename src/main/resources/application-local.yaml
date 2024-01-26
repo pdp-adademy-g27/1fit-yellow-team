@@ -1,4 +1,8 @@
 spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+    password: postgres
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -12,10 +16,10 @@ one-fit:
 
   notification:
     sms:
-      eskiz: # TODO eskiz token here
+      eskiz: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDgwOTIyNzMsImlhdCI6MTcwNTUwMDI3Mywicm9sZSI6InRlc3QiLCJzdWIiOiI1NTQ0In0.UaOOvcYf0TBtIzy5kBm2YOZ2jqM-jiWRP3g9Q1rjrsc
 
   security:
     token:
       expiration: 86400
-      secret: # ZFwrxIeSMF3oKmMtUq8wCgfDVRnte68J5cRG7aE7eG6nLe2miQyM4We7J7yzME7w
+      secret: hDqp3P1lsCHRegptkGeoXbH0Hz7ar1wJ0E1erPBPjTSGMWw9cCwzCf43ZhBNZ01E
 
