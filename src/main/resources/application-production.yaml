@@ -1,7 +1,9 @@
 spring:
-  jpa:
-    hibernate:
-      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username:
+    password:
+  jpa.show-sql: true
 one-fit:
   otp:
     retry-wait-time: 60 # in seconds
@@ -16,4 +18,3 @@ one-fit:
     token:
       expiration: 86400
       secret:  ZFwrxIeSMF3oKmMtUq8wCgfDVRnte68J5cRG7aE7eG6nLe2miQyM4We7J7yzME7w
-

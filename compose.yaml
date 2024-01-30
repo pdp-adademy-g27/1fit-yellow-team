@@ -1,9 +1,10 @@
-services: 
+
+services:
   one-fit-postgres:
     image: postgres:16
     container_name: one_fit_db
     ports:
-      - "9000:5432"
+      - "5555:5432"
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
@@ -12,4 +13,4 @@ services:
     container_name: one-fit-redis
     image: redis:7.2.4
     ports:
-      - "9001:6379"
+      - "6379:6379"
