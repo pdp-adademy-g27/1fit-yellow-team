@@ -17,7 +17,6 @@ import java.util.UUID;
 public class Permission {
     @Id
     private UUID id;
-
     private String name;
 
     @ManyToMany(mappedBy = "permissions")

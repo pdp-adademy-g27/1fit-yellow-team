@@ -91,7 +91,6 @@ public class User implements UserDetails {
     )
     private Set<Saved> saveds;
 
-
     @CreatedDate
     private LocalDateTime created;
 
@@ -106,11 +105,9 @@ public class User implements UserDetails {
 
         Stream<Permission> permissionStream = Stream.concat(rolePermissionStream, permissions.stream());
 
-        Set<SimpleGrantedAuthority> collect = permissionStream
+        return permissionStream
                 .map(permission -> new SimpleGrantedAuthority(permission.getName()))
                 .collect(Collectors.toSet());
-
-        return collect;
     }
 
     @Override
