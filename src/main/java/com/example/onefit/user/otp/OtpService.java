@@ -5,12 +5,12 @@ import com.example.onefit.common.notification.sms.SmsNotificationService;
 import com.example.onefit.common.response.CommonResponse;
 import com.example.onefit.user.dto.ValidatePhoneNumberRequestDto;
 import com.example.onefit.user.otp.entity.Otp;
-import jakarta.mail.Service;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
