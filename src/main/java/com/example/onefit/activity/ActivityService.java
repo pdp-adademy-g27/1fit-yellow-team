@@ -1,7 +1,6 @@
 package com.example.onefit.activity;
 
-
-import com.example.onefit.activity.dto.ActivityCreateDto;
+import com.example.onefit.activity.dto.ActivityCreateDTO;
 import com.example.onefit.activity.dto.ActivityResponseDto;
 import com.example.onefit.activity.dto.ActivityUpdateDto;
 import com.example.onefit.activity.entity.Activity;
@@ -12,39 +11,31 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
-
 @Service
-@Getter
 @RequiredArgsConstructor
-public class ActivityService  extends GenericService<Activity , UUID , ActivityResponseDto , ActivityCreateDto , ActivityUpdateDto> {
+@Getter
+public class
 
+
+ActivityService extends GenericService<Activity, UUID, ActivityResponseDto,ActivityCreateDTO, ActivityUpdateDto> {
     private final ActivityRepository repository;
-    private final Class<Activity> entityClass = Activity.class;
-    private final ActivityDtoMapper mapper;
+    private final Class<Activity> entityClass=Activity.class;
+    private final ActivityMapperDto mapper;
 
     @Override
-    protected ActivityResponseDto internalCreate(ActivityCreateDto activityCreateDto) {
-
-
-        Activity entity = mapper.toEntity(activityCreateDto);
+    protected ActivityResponseDto internalCreate(ActivityCreateDTO activityCreateDTO) {
+        Activity entity = mapper.toEntity(activityCreateDTO);
         entity.setId(UUID.randomUUID());
-
-
-        repository.save(entity);
-
+//        entity.setStartTime();
+//        entity.setEndTime();
         return mapper.toResponseDto(entity);
     }
 
     @Override
     protected ActivityResponseDto internalUpdate(UUID uuid, ActivityUpdateDto activityUpdateDto) {
-
-        Activity activity = repository.findById(uuid).orElseThrow(
-                () -> new EntityNotFoundException("Activity with id %s not found".formatted(uuid)));
-
-
-        mapper.toEntity(activityUpdateDto, activity);
-
-        Activity saved = repository.save(activity);
-        return mapper.toResponseDto(saved);
+        Activity activity = repository.findById(uuid).orElseThrow(EntityNotFoundException::new);
+        mapper.toEntity(activityUpdateDto,activity);
+        repository.save(activity);
+        return mapper.toResponseDto(activity);
     }
 }
