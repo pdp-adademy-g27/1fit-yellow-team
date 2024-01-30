@@ -12,25 +12,25 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class FacilitiesDtoMapper extends GenericMapper<Facilities , FacilitiesCreateDto , FacilitiesResponseDto , FacilitiesUpdateDto> {
-
+public class FacilitiesDtoMapper extends GenericMapper<Facilities, FacilitiesCreateDto, FacilitiesResponseDto, FacilitiesUpdateDto> {
     private final ModelMapper mapper;
 
     @Override
     public Facilities toEntity(FacilitiesCreateDto facilitiesCreateDto) {
-        return mapper.map(facilitiesCreateDto , Facilities.class);
+        return mapper.map(facilitiesCreateDto, Facilities.class);
     }
 
     @Override
     public FacilitiesResponseDto toResponseDto(Facilities facilities) {
         FacilitiesResponseDto facilitiesResponseDto = mapper.map(facilities, FacilitiesResponseDto.class);
 
-
-        return facilitiesResponseDto ;
+        return facilitiesResponseDto;
     }
 
     @Override
     public void toEntity(FacilitiesUpdateDto facilitiesUpdateDto, Facilities facilities) {
-        mapper.map(facilitiesUpdateDto , facilities) ;
+         mapper.map(facilitiesUpdateDto, facilities);
     }
+
+
 }

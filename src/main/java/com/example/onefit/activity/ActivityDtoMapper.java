@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class ActivityDtoMapper extends GenericMapper<Activity , ActivityCreateDto , ActivityResponseDto , ActivityUpdateDto> {
-
+public class ActivityDtoMapper extends GenericMapper<Activity, ActivityCreateDto, ActivityResponseDto, ActivityUpdateDto> {
     private final ModelMapper mapper;
+
     @Override
     public Activity toEntity(ActivityCreateDto createDto) {
-        return mapper.map(createDto , Activity.class);
+        return mapper.map(createDto, Activity.class);
     }
 
     @Override
@@ -26,12 +26,11 @@ public class ActivityDtoMapper extends GenericMapper<Activity , ActivityCreateDt
 
         //todo to map users -> UserResponseDto.class
 
-        return responseDto ;
-
+        return responseDto;
     }
 
     @Override
     public void toEntity(ActivityUpdateDto activityUpdateDto, Activity activity) {
-          mapper.map(activityUpdateDto , activity) ;
+        mapper.map(activityUpdateDto, activity);
     }
 }

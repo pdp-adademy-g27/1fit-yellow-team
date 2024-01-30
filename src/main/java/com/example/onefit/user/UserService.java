@@ -9,6 +9,7 @@ import com.example.onefit.user.dto.UserUpdateDto;
 import com.example.onefit.user.entity.User;
 import com.example.onefit.user.otp.OtpRepository;
 import com.example.onefit.user.otp.entity.Otp;
+import com.example.onefit.user.role.entity.Role;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.Getter;
@@ -66,7 +67,11 @@ public class UserService extends GenericService<User, UUID, UserResponseDto, Use
 
     @Override
     protected UserResponseDto internalUpdate(UUID uuid, UserUpdateDto userUpdateDto) {
-        return null;
+        User user = repository.findById(uuid).orElseThrow(() -> new EntityNotFoundException("User with id: %s not found".formatted(uuid)));
+        mapper.toEntity(userUpdateDto, user);
+
+        User savedUser = repository.save(user);
+        return mapper.toResponseDto(savedUser);
     }
 
     @Override

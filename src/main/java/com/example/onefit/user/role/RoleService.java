@@ -30,13 +30,10 @@ public class RoleService extends GenericService<Role, UUID, RoleResponseDto, Rol
     protected RoleResponseDto internalCreate(RoleCreateDto roleCreateDto) {
         Role entity = mapper.toEntity(roleCreateDto);
         Set<String> dtoPermissionNames = roleCreateDto.getPermissions();
-        Set<Permission> permissions = permissionRepository.findAllByNameIn(roleCreateDto.getPermissions());
+        Set<Permission> permissions = permissionRepository.findAllByNameIn(dtoPermissionNames);
 
         if (dtoPermissionNames.size() != permissions.size()) {
-            Set<String> permissionNames = permissions
-                    .stream()
-                    .map(Permission::getName)
-                    .collect(Collectors.toSet());
+            Set<String> permissionNames = permissions.stream().map(Permission::getName).collect(Collectors.toSet());
 
             dtoPermissionNames.removeAll(permissionNames);
             throw new EntityNotFoundException("Permission with those name are not found. Permission: %s".formatted(dtoPermissionNames));
@@ -49,17 +46,20 @@ public class RoleService extends GenericService<Role, UUID, RoleResponseDto, Rol
 
     @Override
     protected RoleResponseDto internalUpdate(UUID uuid, RoleUpdateDto roleUpdateDto) {
-        Role role = repository.findById(uuid).get();
-        return mapper.toUpdateEntity(roleUpdateDto, role);
+        Role role = repository.findById(uuid).orElseThrow(() -> new EntityNotFoundException("Role with id: %s not found".formatted(uuid)));
+        mapper.toEntity(roleUpdateDto, role);
+
+        Role save = repository.save(role);
+        return mapper.toResponseDto(save);
     }
 
+
     public RoleResponseDto getByName(String name) {
-        Role role = repository
-                .findByName(name)
-                .orElseThrow(
-                        () -> new EntityNotFoundException("Role with name: %s not found".formatted(name))
-                );
+        Role role = repository.findByName(name)
+                .orElseThrow(() -> new EntityNotFoundException("Role with name: %s not found"
+                        .formatted(name)));
         return mapper.toResponseDto(role);
     }
+
 }
 

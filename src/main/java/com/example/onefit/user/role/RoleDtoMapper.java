@@ -32,9 +32,8 @@ public class RoleDtoMapper extends GenericMapper<Role, RoleCreateDto, RoleRespon
     }
 
     @Override
-    public RoleResponseDto toUpdateEntity(RoleUpdateDto roleUpdateDto, Role role) {
-        Role map = modelMapper.map(roleUpdateDto, Role.class);
-        return modelMapper.map(map, RoleResponseDto.class);
+    public void toEntity(RoleUpdateDto roleUpdateDto, Role role) {
+        modelMapper.map(roleUpdateDto, role);
     }
 
 
