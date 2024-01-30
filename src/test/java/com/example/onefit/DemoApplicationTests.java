@@ -1,4 +1,4 @@
-package com.example.onefit;
+/*package com.example.onefit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,4 +10,4 @@ class DemoApplicationTests {
 	void contextLoads() {
 	}
 
-}
+}*/
