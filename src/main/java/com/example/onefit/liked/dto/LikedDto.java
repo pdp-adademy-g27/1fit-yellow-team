@@ -1,4 +1,4 @@
-package com.example.onefit.activity.dto;
+package com.example.onefit.liked.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ActivityResponseDto extends ActivityDto{
-    private UUID id;
-
+public class LikedDto {
+    private UUID course_id;
+    private UUID user_id;
 }

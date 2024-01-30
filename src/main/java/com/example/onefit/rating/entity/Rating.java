@@ -5,7 +5,6 @@ import com.example.onefit.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Set;
 import java.util.UUID;
 
 @Data

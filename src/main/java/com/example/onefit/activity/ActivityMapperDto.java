@@ -1,6 +1,6 @@
 package com.example.onefit.activity;
 
-import com.example.onefit.activity.dto.ActivityCreateDto;
+import com.example.onefit.activity.dto.ActivityCreateDTO;
 import com.example.onefit.activity.dto.ActivityResponseDto;
 import com.example.onefit.activity.dto.ActivityUpdateDto;
 import com.example.onefit.activity.entity.Activity;
@@ -9,29 +9,22 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-
 @Component
 @RequiredArgsConstructor
-public class ActivityDtoMapper extends GenericMapper<Activity , ActivityCreateDto , ActivityResponseDto , ActivityUpdateDto> {
-
-    private final ModelMapper mapper;
+public class ActivityMapperDto extends GenericMapper<Activity, ActivityCreateDTO, ActivityResponseDto, ActivityUpdateDto> {
+    private final ModelMapper modelMapper;
     @Override
-    public Activity toEntity(ActivityCreateDto createDto) {
-        return mapper.map(createDto , Activity.class);
+    public Activity toEntity(ActivityCreateDTO activityCreateDTO) {
+        return modelMapper.map(activityCreateDTO,Activity.class);
     }
 
     @Override
     public ActivityResponseDto toResponseDto(Activity activity) {
-        ActivityResponseDto responseDto = mapper.map(activity, ActivityResponseDto.class);
-
-        //todo to map users -> UserResponseDto.class
-
-        return responseDto ;
-
+        return modelMapper.map(activity, ActivityResponseDto.class);
     }
 
     @Override
     public void toEntity(ActivityUpdateDto activityUpdateDto, Activity activity) {
-          mapper.map(activityUpdateDto , activity) ;
+     modelMapper.map(activity,activityUpdateDto);
     }
 }

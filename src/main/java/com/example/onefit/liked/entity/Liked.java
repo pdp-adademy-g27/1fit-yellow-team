@@ -23,6 +23,7 @@ public class Liked {
     @ToString.Exclude
     private Set<Course> courses;
 
+
     @ManyToMany(mappedBy = "likeds")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
