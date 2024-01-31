@@ -16,52 +16,41 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/liked")
 @RequiredArgsConstructor
-public class LikedContoller{
+public class LikedContoller {
     private final LikedService likedService;
-//    @PreAuthorize(value = "hasAuthority('liked:create')")
+
+    @PreAuthorize(value = "hasAuthority('liked:create')")
     @PostMapping("/addLike")
-    public ResponseEntity<LikedResponseDto> create(@RequestBody LikedCreateDto likedCreateDto){
+    public ResponseEntity<LikedResponseDto> create(@RequestBody LikedCreateDto likedCreateDto) {
         LikedResponseDto likedResponseDto = likedService.create(likedCreateDto);
         System.out.println(likedResponseDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(likedResponseDto);
     }
 
- //   @PreAuthorize(value = "hasAuthority('liked:read')")
+    @PreAuthorize(value = "hasAuthority('liked:read')")
     @GetMapping("/{id}")
-    public LikedResponseDto getId(@PathVariable UUID id){
-     return likedService.get(id);
+    public LikedResponseDto getId(@PathVariable UUID id) {
+        return likedService.get(id);
     }
 
     @PreAuthorize(value = "hasAuthority('liked:read')")
     @GetMapping("/getAll")
-    public Page<LikedResponseDto> getAll(Pageable pageable, @RequestParam(required = false) String predicate){
+    public Page<LikedResponseDto> getAll(Pageable pageable, @RequestParam(required = false) String predicate) {
         return likedService.getAll(predicate, pageable);
 
     }
- //   @PreAuthorize(value = "hasAuthority('liked:update')")
+
+    @PreAuthorize(value = "hasAuthority('liked:update')")
     @PutMapping("/{id}")
-    public LikedResponseDto update(@PathVariable UUID id, @RequestBody LikedUpdateDto likedUpdateDto){
-        return likedService.update(id,likedUpdateDto);
+    public LikedResponseDto update(@PathVariable UUID id, @RequestBody LikedUpdateDto likedUpdateDto) {
+        return likedService.update(id, likedUpdateDto);
     }
 
-   // @PreAuthorize(value = "hasAuthority('liked:delete')")
+    @PreAuthorize(value = "hasAuthority('liked:delete')")
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable UUID id){
+    public void delete(@PathVariable UUID id) {
         likedService.delete(id);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //    @PostMapping("addLike")

@@ -43,13 +43,18 @@ public class UserService extends GenericService<User, UUID, UserResponseDto, Use
     }
 
     private void isPhoneNumberVerified(String phoneNumber) {
+        System.out.println("Otp start");
+        System.out.println(phoneNumber);
+
         Otp otp = otpRepository
                 .findById(phoneNumber)
                 .orElseThrow(() -> new OtpException.PhoneNumberNotVerified(phoneNumber));
 
+        System.out.println("1234312343123");
         if (!otp.isVerified()) {
             throw new OtpException.PhoneNumberNotVerified(phoneNumber);
         }
+        System.out.println("Otp end");
     }
 
     @Transactional

@@ -26,7 +26,9 @@ public class RoleDtoMapper extends GenericMapper<Role, RoleCreateDto, RoleRespon
     @Override
     public RoleResponseDto toResponseDto(Role role) {
         RoleResponseDto responseDto = modelMapper.map(role, RoleResponseDto.class);
-        Set<String> collect = role.getPermissions().stream().map(Permission::getName).collect(Collectors.toSet());
+        Set<String> collect = role.getPermissions()
+                .stream().map(Permission::getName)
+                .collect(Collectors.toSet());
         responseDto.setPermissions(collect);
         return responseDto;
     }
