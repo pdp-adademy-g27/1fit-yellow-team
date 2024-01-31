@@ -48,7 +48,7 @@ public class CategoryController {
         return ResponseEntity.ok(responseDtos);
     }
 
-    @PreAuthorize("hasAuthority('category:delete')")
+    @PreAuthorize("hasAuthority('category:update')")
     @PutMapping("/{name}")
     public ResponseEntity<CategoryResponseDto> update(@PathVariable String name , @RequestBody CategoryUpdateDto updateDto){
 

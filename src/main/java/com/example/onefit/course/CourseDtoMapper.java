@@ -1,6 +1,6 @@
 package com.example.onefit.course;
 
-import com.example.onefit.activity.ActivityDtoMapper;
+import com.example.onefit.activity.ActivityMapperDto;
 import com.example.onefit.activity.dto.ActivityResponseDto;
 import com.example.onefit.category.CategoryDtoMapper;
 import com.example.onefit.category.dto.CategoryResponseDto;
@@ -23,11 +23,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CourseDtoMapper extends
         GenericMapper<Course , CourseCreateDto , CourseResponseDto , CourseUpdateDto> {
-
        private final ModelMapper mapper;
        private final FacilitiesDtoMapper facilitiesDtoMapper;
        private final CategoryDtoMapper categoryDtoMapper;
-       private final ActivityDtoMapper activityDtoMapper;
+       private final ActivityMapperDto activityDtoMapper;
 
     @Override
     public Course toEntity(CourseCreateDto courseCreateDto) {

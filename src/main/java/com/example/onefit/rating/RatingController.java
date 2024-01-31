@@ -17,33 +17,37 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @RequestMapping("/rating")
 public class RatingController {
-private final RatingService service;
-@PreAuthorize("hasAuthority('rating:create')")
-@PostMapping("/addRating")
-    public ResponseEntity<RatingResponseDto> create (@RequestBody RatingCreateDto createDto){
-    RatingResponseDto ratingResponseDto = service.create(createDto);
-    return ResponseEntity.status(HttpStatus.CREATED).body(ratingResponseDto);
-}
-@PreAuthorize("hasAuthority('rating:read')")
-  @GetMapping("/getAll")
-    public Page<RatingResponseDto> getAll(Pageable pageable,@RequestParam(required = false) String predicate){
-    return service.getAll(predicate,pageable);
-  }
-  @PreAuthorize("hasAuthority('rating:read')")
-  @GetMapping("/{id}")
-    public RatingResponseDto get(@PathVariable UUID id){
-    return service.get(id);
-  }
+    private final RatingService service;
 
-  @PreAuthorize("hasAuthority('rating:update')")
-  @PutMapping("/{id}")
-    public RatingResponseDto update(@PathVariable UUID id, @RequestBody RatingUpdateDto updateDto){
-      return service.update(id,updateDto);
-  }
-@PreAuthorize(value = "hasAuthority('rating:delete')")
-  @DeleteMapping("/{Id}")
-    public void delete(@PathVariable UUID uuid){
-    service.delete(uuid);
-  }
+    @PreAuthorize("hasAuthority('rating:create')")
+    @PostMapping("/addRating")
+    public ResponseEntity<RatingResponseDto> create(@RequestBody RatingCreateDto createDto) {
+        RatingResponseDto ratingResponseDto = service.create(createDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(ratingResponseDto);
+    }
+
+    @PreAuthorize("hasAuthority('rating:read')")
+    @GetMapping("/getAll")
+    public Page<RatingResponseDto> getAll(Pageable pageable, @RequestParam(required = false) String predicate) {
+        return service.getAll(predicate, pageable);
+    }
+
+    @PreAuthorize("hasAuthority('rating:read')")
+    @GetMapping("/{id}")
+    public RatingResponseDto get(@PathVariable UUID id) {
+        return service.get(id);
+    }
+
+    @PreAuthorize("hasAuthority('rating:update')")
+    @PutMapping("/{id}")
+    public RatingResponseDto update(@PathVariable UUID id, @RequestBody RatingUpdateDto updateDto) {
+        return service.update(id, updateDto);
+    }
+
+    @PreAuthorize(value = "hasAuthority('rating:delete')")
+    @DeleteMapping("/{Id}")
+    public void delete(@PathVariable UUID uuid) {
+        service.delete(uuid);
+    }
 
 }

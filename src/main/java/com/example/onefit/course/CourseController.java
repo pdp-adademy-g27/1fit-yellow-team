@@ -49,7 +49,7 @@ public class CourseController {
         return ResponseEntity.ok(responseDtos);
     }
 
-   @PreAuthorize("hasAuthority('course:delete')")
+   @PreAuthorize("hasAuthority('course:update')")
     @PutMapping("/{id}")
     public ResponseEntity<CourseResponseDto> update(@PathVariable UUID id , @RequestBody CourseUpdateDto updateDto){
 
