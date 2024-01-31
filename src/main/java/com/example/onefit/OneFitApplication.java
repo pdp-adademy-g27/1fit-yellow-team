@@ -45,7 +45,7 @@ public class OneFitApplication implements CommandLineRunner {
         Set<Permission> userPermissions = permissionRepository
                 .findAllByNameIn(Set.of("activity:read", "category:read", "course:read", "facilities:read", "liked:read", "location:read", "rating:read", "saved:read"));
         Set<Permission> staffPermissions = permissionRepository
-                .findAllByNameIn(Set.of("activity:read", "category:read", "course:read", "facilities:read", "liked:read", "location:read", "rating:read", "saved:read"));
+                .findAllByNameIn(Set.of("course:create", "course:read", "course:delete", "feedback:read", "subscription:create", "subscription:read", "subscription:update", "subscription:delete"));
 
         Role existAdmin = roleRepository.findByName("ADMIN").orElse(null);
         Role existUser = roleRepository.findByName("USER").orElse(null);
@@ -104,6 +104,12 @@ public class OneFitApplication implements CommandLineRunner {
         permissions.add(new Permission(UUID.randomUUID(), "facilities:update", null, null));
         permissions.add(new Permission(UUID.randomUUID(), "facilities:delete", null, null));
 
+        // Feedback table permissions
+        permissions.add(new Permission(UUID.randomUUID(), "feedback:create", null, null));
+        permissions.add(new Permission(UUID.randomUUID(), "feedback:read", null, null));
+        permissions.add(new Permission(UUID.randomUUID(), "feedback:update", null, null));
+        permissions.add(new Permission(UUID.randomUUID(), "feedback:delete", null, null));
+
         // Liked table permissions
         permissions.add(new Permission(UUID.randomUUID(), "liked:create", null, null));
         permissions.add(new Permission(UUID.randomUUID(), "liked:read", null, null));
@@ -127,6 +133,12 @@ public class OneFitApplication implements CommandLineRunner {
         permissions.add(new Permission(UUID.randomUUID(), "saved:read", null, null));
         permissions.add(new Permission(UUID.randomUUID(), "saved:update", null, null));
         permissions.add(new Permission(UUID.randomUUID(), "saved:delete", null, null));
+
+        // Subscription table permissions
+        permissions.add(new Permission(UUID.randomUUID(), "subscription:create", null, null));
+        permissions.add(new Permission(UUID.randomUUID(), "subscription:read", null, null));
+        permissions.add(new Permission(UUID.randomUUID(), "subscription:update", null, null));
+        permissions.add(new Permission(UUID.randomUUID(), "subscription:delete", null, null));
 
         // Role table permissions
         permissions.add(new Permission(UUID.randomUUID(), "role:create", null, null));
