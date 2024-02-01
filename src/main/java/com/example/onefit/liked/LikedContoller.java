@@ -18,7 +18,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class LikedContoller{
     private final LikedService likedService;
-//    @PreAuthorize(value = "hasAuthority('liked:create')")
+    @PreAuthorize(value = "hasAuthority('liked:create')")
     @PostMapping("/addLike")
     public ResponseEntity<LikedResponseDto> create(@RequestBody LikedCreateDto likedCreateDto){
         LikedResponseDto likedResponseDto = likedService.create(likedCreateDto);
@@ -26,7 +26,7 @@ public class LikedContoller{
         return ResponseEntity.status(HttpStatus.CREATED).body(likedResponseDto);
     }
 
- //   @PreAuthorize(value = "hasAuthority('liked:read')")
+    @PreAuthorize(value = "hasAuthority('liked:read')")
     @GetMapping("/{id}")
     public LikedResponseDto getId(@PathVariable UUID id){
      return likedService.get(id);
@@ -38,13 +38,13 @@ public class LikedContoller{
         return likedService.getAll(predicate, pageable);
 
     }
- //   @PreAuthorize(value = "hasAuthority('liked:update')")
+    @PreAuthorize(value = "hasAuthority('liked:update')")
     @PutMapping("/{id}")
     public LikedResponseDto update(@PathVariable UUID id, @RequestBody LikedUpdateDto likedUpdateDto){
         return likedService.update(id,likedUpdateDto);
     }
 
-   // @PreAuthorize(value = "hasAuthority('liked:delete')")
+    @PreAuthorize(value = "hasAuthority('liked:delete')")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable UUID id){
         likedService.delete(id);
