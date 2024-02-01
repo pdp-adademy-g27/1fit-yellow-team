@@ -22,6 +22,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 public class Course {
+
     @Id
     private UUID id;
     private String name;
