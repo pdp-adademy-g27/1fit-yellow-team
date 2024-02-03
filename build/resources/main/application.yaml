@@ -1,7 +1,0 @@
-spring:
-  profiles:
-    active: local
-  docker:
-    compose:
-      file: "1fit-yellow-team/compose.yaml"
-      lifecycle-management: start_only
