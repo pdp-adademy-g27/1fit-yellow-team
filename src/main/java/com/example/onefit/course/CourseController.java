@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -22,7 +22,7 @@ public class CourseController {
 
     private final CourseService courseService;
 
-    @PreAuthorize("hasAuthority('course:create')")
+    //@PreAuthorize("hasAuthority('course:create')")
     @PostMapping
     public ResponseEntity<CourseResponseDto> create(@RequestBody CourseCreateDto createDto){
 
@@ -31,7 +31,7 @@ public class CourseController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 
-   @PreAuthorize("hasAuthority('course:read')")
+   //@PreAuthorize("hasAuthority('course:read')")
     @GetMapping("/{id}")
     public ResponseEntity<CourseResponseDto> get(@PathVariable UUID id){
 
@@ -40,7 +40,7 @@ public class CourseController {
         return ResponseEntity.ok(responseDto);
     }
 
-   @PreAuthorize("hasAuthority('course:read')")
+   //@PreAuthorize("hasAuthority('course:read')")
     @GetMapping
     public ResponseEntity<Page<CourseResponseDto>> get(@RequestParam(required = false) String predicate , Pageable pageable){
 
@@ -49,7 +49,7 @@ public class CourseController {
         return ResponseEntity.ok(responseDtos);
     }
 
-   @PreAuthorize("hasAuthority('course:update')")
+   //@PreAuthorize("hasAuthority('course:update')")
     @PutMapping("/{id}")
     public ResponseEntity<CourseResponseDto> update(@PathVariable UUID id , @RequestBody CourseUpdateDto updateDto){
 
@@ -58,7 +58,7 @@ public class CourseController {
         return ResponseEntity.ok(update);
     }
 
-  @PreAuthorize("hasAuthority('course:delete')")
+  //@PreAuthorize("hasAuthority('course:delete')")
     @DeleteMapping("/{id}")
     public ResponseEntity<CourseResponseDto> delete(@PathVariable UUID id){
 
@@ -66,8 +66,4 @@ public class CourseController {
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
-
-
-
 }

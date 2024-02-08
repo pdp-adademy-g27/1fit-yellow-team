@@ -1,11 +1,23 @@
 package com.example.onefit.location.dto;
 
-import com.example.onefit.course.dto.CourseResponseDto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-public class LocationResponseDto extends LocationBaseDto {
 
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class LocationResponseDto extends LocationBaseDto {
     private UUID id;
-    private CourseResponseDto course;
+
+    public LocationResponseDto(UUID id ,
+        String name, String latitude , String longitude){
+        super(name , latitude , longitude);
+    }
 }

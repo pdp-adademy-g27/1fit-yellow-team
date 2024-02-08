@@ -27,7 +27,7 @@ public class Course {
     private String name;
     private String description;
 
-    @OneToOne(mappedBy = "course", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Location location;
 
     private boolean isFemale;
@@ -43,7 +43,7 @@ public class Course {
     @JoinTable(
             name = "course_facilities",
             joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "facilities_id")
+            inverseJoinColumns = @JoinColumn(name = "facilities_id" )
     )
     private Set<Facilities> facilities;
 
@@ -59,7 +59,7 @@ public class Course {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany(mappedBy = "course",fetch = FetchType.EAGER)
+    @OneToMany
     private Set<Rating> ratings;
 
     @EqualsAndHashCode.Exclude
@@ -74,7 +74,7 @@ public class Course {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "course_liked",
             joinColumns = @JoinColumn(name = "course_id"),

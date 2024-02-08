@@ -1,37 +1,45 @@
 package com.example.onefit.rating;
 
-import com.example.onefit.common.service.GenericService;
+import com.example.onefit.course.dto.CourseResponseDto;
+import com.example.onefit.course.entity.Course;
 import com.example.onefit.rating.dto.RatingCreateDto;
 import com.example.onefit.rating.dto.RatingResponseDto;
-import com.example.onefit.rating.dto.RatingUpdateDto;
 import com.example.onefit.rating.entity.Rating;
-import jakarta.persistence.EntityNotFoundException;
+import com.example.onefit.user.dto.UserResponseDto;
+import com.example.onefit.user.entity.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Getter
-public class RatingService extends GenericService<Rating, UUID, RatingResponseDto, RatingCreateDto, RatingUpdateDto> {
-    private final RatingRepository repository;
-    private final Class<Rating> entityClass=Rating.class;
-    private final RatingDtoMapper mapper;
+public class RatingService {
+    private final ModelMapper modelMapper;
+    private final RatingRepository ratingRepository;
 
-    @Override
-    protected RatingResponseDto internalCreate(RatingCreateDto ratingCreateDto) {
-        Rating entity = mapper.toEntity(ratingCreateDto);
-        entity.setId(UUID.randomUUID());
-        repository.save(entity);
-        return mapper.toResponseDto(entity);
-    }
+    public RatingResponseDto create(RatingCreateDto createDto) {
 
-    @Override
-    protected RatingResponseDto internalUpdate(UUID uuid, RatingUpdateDto ratingUpdateDto) {
-        Rating rating = repository.findById(uuid).orElseThrow(EntityNotFoundException::new);
-        mapper.toEntity(ratingUpdateDto,rating);
-        Rating save = repository.save(rating);
-        return mapper.toResponseDto(save);
+        CourseResponseDto course = createDto.getCourse() ;
+        UserResponseDto user = createDto.getUser();
+        Optional<Rating> existingRating = ratingRepository
+                .findByCourse_IdAndAndUser_Id(course.getId(), user.getId());
+
+        if (existingRating.isEmpty()){
+
+            Rating entity = modelMapper.map(createDto , Rating.class) ;
+
+            entity.setId(UUID.randomUUID());
+
+            Rating save = ratingRepository.save(entity);
+            return  new RatingResponseDto(save.getId() , user , course , "Successfully send") ;
+        }
+
+
+        Rating rating = existingRating.get();
+        return  new RatingResponseDto(rating.getId() , user , course , "You already rate this course") ;
     }
 }

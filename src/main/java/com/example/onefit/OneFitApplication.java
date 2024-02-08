@@ -1,5 +1,9 @@
 package com.example.onefit;
 
+import com.example.onefit.course.CourseRepository;
+import com.example.onefit.course.entity.Course;
+import com.example.onefit.location.LocationRepository;
+import com.example.onefit.location.entity.Location;
 import com.example.onefit.user.UserRepository;
 import com.example.onefit.user.entity.User;
 import com.example.onefit.user.permission.PermissionRepository;
@@ -15,6 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @SpringBootApplication
@@ -26,6 +31,8 @@ public class OneFitApplication implements CommandLineRunner {
     private final PermissionRepository permissionRepository;
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
+    private final CourseRepository courseRepository;
+    private final LocationRepository locationRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(OneFitApplication.class, args);
@@ -35,6 +42,8 @@ public class OneFitApplication implements CommandLineRunner {
     public void run(String... args) {
         createPermissions();
         createAdmin();
+        createLocation();
+       createCourses();
     }
 
     private void createAdmin() {
@@ -145,6 +154,35 @@ public class OneFitApplication implements CommandLineRunner {
         permissions.add(new Permission(UUID.randomUUID(), "role:read", null, null));
 
         permissionRepository.saveAll(permissions);
+    }
+
+
+    private void createLocation(){
+
+        locationRepository.deleteAll();
+        Location location1 = new Location(UUID.randomUUID() , "Tashkent" , "123" , "123" ) ;
+        Location location2 = new Location(UUID.randomUUID() , "Tashkent1" , "1233" , "1233") ;
+
+
+        locationRepository.save(location1);
+        locationRepository.save(location2);
+    }
+
+    private void createCourses(){
+      courseRepository.deleteAll();
+
+      List<Location> locations = locationRepository.findAll();
+
+        List<Course> courses = new ArrayList<>();
+
+        courses.add(new Course(UUID.randomUUID() , "Swim" , "The best course" , locations.get(0) , false , List.of("1231231") , Collections.emptySet() ,
+                Collections.emptySet() , Collections.emptySet() , Collections.emptySet()  , Collections.emptySet() , Collections.emptySet(), LocalDateTime.now() , LocalDateTime.now()));
+
+        courses.add(new Course( UUID.randomUUID(), "Football" , "The best course" , locations.get(1) , true , List.of("1231478"),
+                Collections.emptySet() , Collections.emptySet() , Collections.emptySet() , Collections.emptySet() ,  Collections.emptySet()  , Collections.emptySet(), LocalDateTime.now() , LocalDateTime.now()));
+
+
+        courseRepository.saveAll(courses);
     }
 
 }

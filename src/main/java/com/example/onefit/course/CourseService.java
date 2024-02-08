@@ -6,6 +6,10 @@ import com.example.onefit.course.dto.CourseCreateDto;
 import com.example.onefit.course.dto.CourseResponseDto;
 import com.example.onefit.course.dto.CourseUpdateDto;
 import com.example.onefit.course.entity.Course;
+import com.example.onefit.location.LocationDtoMapper;
+import com.example.onefit.location.LocationRepository;
+import com.example.onefit.location.LocationService;
+import com.example.onefit.location.entity.Location;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -23,13 +27,23 @@ public class CourseService extends
     private final CourseRepository repository;
     private final Class<Course> entityClass = Course.class;
     private final CourseDtoMapper mapper;
+    private final LocationRepository locationRepository;
+    private final LocationDtoMapper locationDtoMapper;
 
     @Override
     protected CourseResponseDto internalCreate(CourseCreateDto courseCreateDto) {
+        System.out.println(courseCreateDto.getLocation());
+        System.out.println(courseCreateDto);
+
+        Location location = locationDtoMapper.toEntity(courseCreateDto.getLocation());
+        location.setId(UUID.randomUUID());
+
+        locationRepository.save(location);
 
         Course entity = mapper.toEntity(courseCreateDto);
-
         entity.setId(UUID.randomUUID());
+        entity.setLocation(location);
+
         repository.save(entity);
 
         return mapper.toResponseDto(entity);

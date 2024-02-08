@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -20,7 +20,7 @@ public class FacilitiesController {
 
     private final FacilitiesService facilitiesService;
 
-    @PreAuthorize("hasAuthority('facilities:create')")
+  //  @PreAuthorize("hasAuthority('facilities:create')")
     @PostMapping
     public ResponseEntity<FacilitiesResponseDto> create(@RequestBody FacilitiesCreateDto createDto){
 
@@ -29,7 +29,7 @@ public class FacilitiesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 
-   @PreAuthorize("hasAuthority('facilities:read')")
+ //  @PreAuthorize("hasAuthority('facilities:read')")
     @GetMapping("/{name}")
     public ResponseEntity<FacilitiesResponseDto> get(@PathVariable String name){
 
@@ -38,7 +38,7 @@ public class FacilitiesController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @PreAuthorize("hasAuthority('facilities:read')")
+  //  @PreAuthorize("hasAuthority('facilities:read')")
     @GetMapping
     public ResponseEntity<Page<FacilitiesResponseDto>> get(@RequestParam(required = false) String predicate , Pageable pageable){
 
@@ -47,7 +47,7 @@ public class FacilitiesController {
         return ResponseEntity.ok(responseDtos);
     }
 
-  @PreAuthorize("hasAuthority('facilities:update')")
+//  @PreAuthorize("hasAuthority('facilities:update')")
     @PutMapping("/{name}")
     public ResponseEntity<FacilitiesResponseDto> update(@PathVariable String name , @RequestBody FacilitiesUpdateDto updateDto){
 
@@ -56,7 +56,7 @@ public class FacilitiesController {
         return ResponseEntity.ok(update);
     }
 
-  @PreAuthorize("hasAuthority('facilities:delete')")
+ // @PreAuthorize("hasAuthority('facilities:delete')")
     @DeleteMapping("/{name}")
     public ResponseEntity<FacilitiesResponseDto> delete(@PathVariable String name){
 

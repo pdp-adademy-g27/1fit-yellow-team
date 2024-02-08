@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class FeedBackDtoMapper extends GenericMapper<Feedback, FeedBackCreateDto, FeedBackResponseDto, FeedBackUpdateDto> {
+public class FeedbackDtoMapper extends GenericMapper<Feedback, FeedBackCreateDto, FeedBackResponseDto, FeedBackUpdateDto> {
     private final ModelMapper modelMapper;
     @Override
     public Feedback toEntity(FeedBackCreateDto feedBackCreateDto) {

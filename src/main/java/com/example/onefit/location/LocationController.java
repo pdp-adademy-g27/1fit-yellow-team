@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -20,7 +20,7 @@ import java.util.UUID;
 public class LocationController {
     private final LocationService locationService;
 
-    @PreAuthorize("hasAuthority('location:create')")
+ //   @PreAuthorize("hasAuthority('location:create')")
     @PostMapping
     public ResponseEntity<LocationResponseDto> create(@RequestBody LocationCreateDto createDto) {
 
@@ -29,7 +29,7 @@ public class LocationController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 
-    @PreAuthorize("hasAuthority('location:read')")
+ //   @PreAuthorize("hasAuthority('location:read')")
     @GetMapping("/{id}")
     public ResponseEntity<LocationResponseDto> get(@PathVariable UUID id) {
 
@@ -38,7 +38,7 @@ public class LocationController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @PreAuthorize("hasAuthority('location:read')")
+ //   @PreAuthorize("hasAuthority('location:read')")
     @GetMapping
     public ResponseEntity<Page<LocationResponseDto>> get(@RequestParam(required = false) String predicate, Pageable pageable) {
 
@@ -47,7 +47,7 @@ public class LocationController {
         return ResponseEntity.ok(responseDtos);
     }
 
-    @PreAuthorize("hasAuthority('location:update')")
+ //   @PreAuthorize("hasAuthority('location:update')")
     @PutMapping("/{id}")
     public ResponseEntity<LocationResponseDto> update(@PathVariable UUID id, @RequestBody LocationUpdateDto updateDto) {
 
@@ -56,7 +56,7 @@ public class LocationController {
         return ResponseEntity.ok(update);
     }
 
-    @PreAuthorize("hasAuthority('location:delete')")
+ //   @PreAuthorize("hasAuthority('location:delete')")
     @DeleteMapping("/{id}")
     public ResponseEntity<LocationResponseDto> delete(@PathVariable UUID id) {
 

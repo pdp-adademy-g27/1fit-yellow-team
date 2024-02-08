@@ -1,7 +1,9 @@
 package com.example.onefit.liked.dto;
 
-import com.example.onefit.course.entity.Course;
-import com.example.onefit.user.entity.User;
+
+import com.example.onefit.course.dto.CourseResponseDto;
+import com.example.onefit.user.dto.UserResponseDto;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,11 +13,14 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-//@EqualsAndHashCode(callSuper = true)
 public class LikedResponseDto {
-    private UUID id;
-    private UUID course_id;
-    private UUID user_id;
-    private User users;
-    private Course courses;
+
+      @NotBlank
+    private UserResponseDto user;
+
+
+      @NotBlank
+    private CourseResponseDto course;
+
+    private String action;
 }

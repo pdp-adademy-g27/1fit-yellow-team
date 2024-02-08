@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,21 +18,21 @@ public class RoleController {
     private final RoleService roleService;
 
     @PostMapping
-    @PreAuthorize(value = "hasAuthority('role:create')")
+ //   @PreAuthorize(value = "hasAuthority('role:create')")
     public ResponseEntity<RoleResponseDto> createRole(@RequestBody @Valid RoleCreateDto roleCreateDto) {
         RoleResponseDto responseDto = roleService.create(roleCreateDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 
     @GetMapping
-    @PreAuthorize(value = "hasAuthority('role:read')")
+ //   @PreAuthorize(value = "hasAuthority('role:read')")
     public ResponseEntity<Page<RoleResponseDto>> getRoles(@RequestParam(required = false) String predicate, Pageable pageable) {
         Page<RoleResponseDto> roleResponseDTOS = roleService.getAll(predicate, pageable);
         return ResponseEntity.ok(roleResponseDTOS);
     }
 
     @GetMapping("/{name}")
-    @PreAuthorize(value = "hasAuthority('role:read')")
+ //   @PreAuthorize(value = "hasAuthority('role:read')")
     public ResponseEntity<RoleResponseDto> getRole(@PathVariable String name) {
         RoleResponseDto roleResponseDto = roleService.getByName(name);
         return ResponseEntity.ok(roleResponseDto);
