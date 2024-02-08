@@ -70,6 +70,9 @@ dependencies {
 	implementation 'org.modelmapper:modelmapper:3.2.0'
 }
 
+//rabbit mq
+/*   implementation 'org.springframework.boot:spring-boot-starter-amqp'*/
+
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"

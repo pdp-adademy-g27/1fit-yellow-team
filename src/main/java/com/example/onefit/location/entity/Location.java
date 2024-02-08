@@ -1,6 +1,5 @@
 package com.example.onefit.location.entity;
 
-import com.example.onefit.course.entity.Course;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,8 +17,4 @@ public class Location {
     private String latitude;
     private String longitude;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "id")
-    private Course course;
 }

@@ -21,7 +21,9 @@ public class SecurityConfig {
                 .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         registry -> registry
-                                .requestMatchers("/user/auth/**")
+                                .requestMatchers("/user/auth/**" , "/course/**" , "/category/**" ,
+                                        "/location/**" , "/facilities/**" , "/activity/**" , "/feedback/**" ,
+                                        "/liked/**" , "/liked/**" , "/rating/**" , "/subscription/**" )
                                 .permitAll()
                                 .anyRequest().authenticated()
                 )
@@ -29,7 +31,7 @@ public class SecurityConfig {
                         session -> session
                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
-                .addFilterBefore(authorizationFilter, UsernamePasswordAuthenticationFilter.class)
+         //       .addFilterBefore(authorizationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 

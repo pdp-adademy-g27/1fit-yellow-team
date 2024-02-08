@@ -10,6 +10,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,11 +28,14 @@ import java.util.stream.Stream;
 @NoArgsConstructor
 @Entity
 @Table(name = "`user`")
+@EntityListeners({AuditingEntityListener.class})
 public class User implements UserDetails {
     @Id
     private UUID id;
     private String name;
+    @Column(unique = true)
     private String phoneNumber;
+    @Column(unique = true)
     private String email;
     private String password;
     private LocalDate dateOfBirth;
@@ -68,7 +72,7 @@ public class User implements UserDetails {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Rating> ratings;
 
     @EqualsAndHashCode.Exclude
@@ -90,7 +94,6 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private Set<Saved> saveds;
-
 
     @CreatedDate
     private LocalDateTime created;

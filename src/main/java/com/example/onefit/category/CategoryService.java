@@ -38,8 +38,22 @@ public class CategoryService extends GenericService<Category , String , Category
                 () -> new EntityNotFoundException("Category with name %s not found".formatted(s)));
 
 
-        mapper.toEntity(categoryUpdateDto, category);
-        Category saved = repository.save(category);
-        return mapper.toResponseDto(saved);
+
+     ///   mapper.toEntity(categoryUpdateDto, category);
+   //     Category newOne = new Category(category.getName() , category.getSmallImage() , category.getBigImage() , category.getCourses()) ;
+    //    System.out.println(newOne);
+
+
+        Category category1 = new Category(categoryUpdateDto.getName() , categoryUpdateDto.getSmallImage() ,
+                categoryUpdateDto.getBigImage() , category.getCourses()) ;
+
+
+
+        repository.delete(category);
+
+        repository.save(category1);
+
+
+        return mapper.toResponseDto(category1);
     }
 }

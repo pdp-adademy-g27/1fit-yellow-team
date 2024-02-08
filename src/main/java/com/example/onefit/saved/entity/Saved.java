@@ -15,6 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 public class Saved {
+
     @Id
     private UUID id;
 

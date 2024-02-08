@@ -1,6 +1,6 @@
 package com.example.onefit.course;
 
-import com.example.onefit.activity.ActivityDtoMapper;
+import com.example.onefit.activity.ActivityMapperDto;
 import com.example.onefit.activity.dto.ActivityResponseDto;
 import com.example.onefit.category.CategoryDtoMapper;
 import com.example.onefit.category.dto.CategoryResponseDto;
@@ -23,11 +23,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CourseDtoMapper extends
         GenericMapper<Course , CourseCreateDto , CourseResponseDto , CourseUpdateDto> {
-
        private final ModelMapper mapper;
        private final FacilitiesDtoMapper facilitiesDtoMapper;
        private final CategoryDtoMapper categoryDtoMapper;
-       private final ActivityDtoMapper activityDtoMapper;
+       private final ActivityMapperDto activityDtoMapper;
 
     @Override
     public Course toEntity(CourseCreateDto courseCreateDto) {
@@ -38,31 +37,41 @@ public class CourseDtoMapper extends
     public CourseResponseDto toResponseDto(Course course) {
         CourseResponseDto courseResponseDto = mapper.map(course, CourseResponseDto.class);
 
-        Set<FacilitiesResponseDto> facilities = course
-                .getFacilities()
-                .stream()
-                .map(facilitiesDtoMapper::toResponseDto)
-                .collect(Collectors.toSet());
 
-        Set<CategoryResponseDto> categories = course
-                .getCategories()
-                .stream()
-                .map(categoryDtoMapper::toResponseDto)
-                .collect(Collectors.toSet());
+        if(course.getFacilities() != null) {
+            Set<FacilitiesResponseDto> facilities = course
+                    .getFacilities()
+                    .stream()
+                    .map(facilitiesDtoMapper::toResponseDto)
+                    .collect(Collectors.toSet());
 
-        Set<ActivityResponseDto> activities = course
-                .getActivities()
-                .stream()
-                .map(activityDtoMapper::toResponseDto)
-                .collect(Collectors.toSet());
+            courseResponseDto.setFacilities(facilities);
 
+        }
+
+        if (course.getCategories() != null) {
+            Set<CategoryResponseDto> categories = course
+                    .getCategories()
+                    .stream()
+                    .map(categoryDtoMapper::toResponseDto)
+                    .collect(Collectors.toSet());
+            courseResponseDto.setCategories(categories);
+        }
+
+        if(course.getActivities() != null) {
+            Set<ActivityResponseDto> activities = course
+                    .getActivities()
+                    .stream()
+                    .map(activityDtoMapper::toResponseDto)
+                    .collect(Collectors.toSet());
+            courseResponseDto.setActivities(activities);
+        }
 
 
       //todo map likeds , saveds  , rating -> responseDto
 
-       courseResponseDto.setActivities(activities);
-       courseResponseDto.setCategories(categories);
-       courseResponseDto.setFacilities(facilities);
+
+
 
         return courseResponseDto;
     }
