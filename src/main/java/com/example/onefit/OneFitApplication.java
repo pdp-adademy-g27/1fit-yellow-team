@@ -5,6 +5,7 @@ import com.example.onefit.course.entity.Course;
 import com.example.onefit.location.LocationRepository;
 import com.example.onefit.location.entity.Location;
 import com.example.onefit.subscription.SubscriptionRepository;
+import com.example.onefit.subscription.entity.Subscription;
 import com.example.onefit.user.UserRepository;
 import com.example.onefit.user.entity.User;
 import com.example.onefit.user.permission.PermissionRepository;
@@ -44,13 +45,24 @@ public class OneFitApplication implements CommandLineRunner {
     public void run(String... args) {
         createPermissions();
         createAdmin();
-        createLocation();
-       createCourses();
+        createCourses();
         createSubscription();
     }
 
     private void createSubscription() {
         subscriptionRepository.deleteAll();
+
+        List<Subscription> subscriptions = new ArrayList<>();
+
+        subscriptions.add(new Subscription(UUID.randomUUID() , 5 , 500_000d , "image 1" , false ));
+
+
+        subscriptions.add(new Subscription(UUID.randomUUID() , 90 , 2_690_000d , "image 1" , false ));
+        subscriptions.add(new Subscription(UUID.randomUUID() , 180 , 4_190_500d , "image 2" , false ));
+        subscriptions.add(new Subscription(UUID.randomUUID() , 365 , 5_590_000d , "image 3" , false ));
+
+
+        subscriptionRepository.saveAll(subscriptions);
     }
 
     private void createAdmin() {
@@ -164,32 +176,26 @@ public class OneFitApplication implements CommandLineRunner {
     }
 
 
-    private void createLocation(){
+    private void createCourses(){
+      courseRepository.deleteAll();
 
-        locationRepository.deleteAll();
         Location location1 = new Location(UUID.randomUUID() , "Tashkent" , "123" , "123" ) ;
         Location location2 = new Location(UUID.randomUUID() , "Tashkent1" , "1233" , "1233") ;
 
 
         locationRepository.save(location1);
         locationRepository.save(location2);
-    }
-
-    private void createCourses(){
-      courseRepository.deleteAll();
-
-      List<Location> locations = locationRepository.findAll();
 
         List<Course> courses = new ArrayList<>();
 
-        courses.add(new Course(UUID.randomUUID() , "Swim" , "The best course" , locations.get(0) , false , List.of("1231231") , Collections.emptySet() ,
+        courses.add(new Course(UUID.randomUUID() , "Swim" , "The best course" , location1 , false , List.of("1231231") , Collections.emptySet() ,
                 Collections.emptySet() , Collections.emptySet() , Collections.emptySet()  , Collections.emptySet() , Collections.emptySet(), LocalDateTime.now() , LocalDateTime.now()));
 
-        courses.add(new Course( UUID.randomUUID(), "Football" , "The best course" , locations.get(1) , true , List.of("1231478"),
+        courses.add(new Course( UUID.randomUUID(), "Football" , "The best course" , location2 , true , List.of("1231478"),
                 Collections.emptySet() , Collections.emptySet() , Collections.emptySet() , Collections.emptySet() ,  Collections.emptySet()  , Collections.emptySet(), LocalDateTime.now() , LocalDateTime.now()));
-
 
         courseRepository.saveAll(courses);
     }
+
 
 }

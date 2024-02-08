@@ -15,11 +15,10 @@ import java.util.UUID;
 @Data
 public class LikedResponseDto {
 
-      @NotBlank
+    @NotBlank
     private UserResponseDto user;
 
-
-      @NotBlank
+    @NotBlank
     private CourseResponseDto course;
 
     private String action;

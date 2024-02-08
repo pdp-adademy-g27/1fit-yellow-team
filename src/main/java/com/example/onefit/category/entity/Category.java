@@ -19,7 +19,7 @@ public class Category {
     private String smallImage;
     private String bigImage;
 
-    @ManyToMany(mappedBy = "categories" , fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "categories" )
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Set<Course> courses;

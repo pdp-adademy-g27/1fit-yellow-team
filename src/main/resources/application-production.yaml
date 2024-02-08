@@ -7,10 +7,10 @@ one-fit:
     retry-wait-time: 60 # in seconds
     retry-count: 3
     time-to-live: 3600 # in seconds
+
   notification:
     sms:
-      eskiz:
-
+      eskiz: FMrOwoLPY38lu29ODuC4wIHvUX0yFmM3p8qNla9r
   security:
     token:
       expiration: 86400

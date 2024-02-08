@@ -1,4 +1,4 @@
 package com.example.onefit.activity.dto;
 
-public class git ActivityUpdateDto extends ActivityDto{
+public class ActivityUpdateDto extends ActivityDto{
 }

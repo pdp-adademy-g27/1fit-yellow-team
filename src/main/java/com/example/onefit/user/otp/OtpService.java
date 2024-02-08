@@ -29,6 +29,8 @@ public class OtpService {
     private int retryCount;
     @Value("${one-fit.otp.time-to-live}")
     private int timeToLive;
+
+
     private final SmsNotificationService smsNotificationService;
 
     @Transactional

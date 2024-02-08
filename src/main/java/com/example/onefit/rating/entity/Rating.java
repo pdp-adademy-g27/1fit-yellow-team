@@ -20,6 +20,7 @@ public class Rating {
 
     @Min(0) @Max(10)
     private int star;
+
     private String comment;
 
     @ManyToOne

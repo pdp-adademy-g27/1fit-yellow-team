@@ -17,10 +17,8 @@ public class Subscription {
     @Id
     private UUID id;
 
-    @NotBlank
     private Integer days;
 
-    @NotBlank
     private Double price;
 
     @NotBlank

@@ -1,8 +1,7 @@
 package com.example.onefit.liked.dto;
 
 
-import com.example.onefit.course.dto.CourseResponseDto;
-import com.example.onefit.user.dto.UserResponseDto;
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,9 +16,9 @@ import java.util.UUID;
 public class LikedCreateDto{
 
     @NotBlank
-    private CourseResponseDto course;
+    private UUID course;
 
     @NotBlank
-    private UserResponseDto user;
+    private UUID user;
 
 }

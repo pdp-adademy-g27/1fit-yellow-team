@@ -1,30 +1,32 @@
 package com.example.onefit.rating.dto;
 
-import com.example.onefit.course.dto.CourseResponseDto;
-import com.example.onefit.course.entity.Course;
-import com.example.onefit.user.dto.UserResponseDto;
-import com.example.onefit.user.entity.User;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-@EqualsAndHashCode(callSuper = true)
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class RatingResponseDto extends RatingDto {
+public class RatingResponseDto {
 
     @NotBlank
     private UUID id;
 
     @NotBlank
-    private UserResponseDto user;
+    private UUID user;
 
     @NotBlank
-    private CourseResponseDto course;
-    private String message;
+    private UUID course;
+
+    @Max(10) @Min(0)
+    private Integer star;
+
+    private String comment;
+
 }

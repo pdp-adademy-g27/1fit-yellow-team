@@ -18,7 +18,7 @@ public class Facilities {
     private String name;
     private String image;
 
-    @ManyToMany(mappedBy = "facilities" , fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "facilities")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Set<Course> courses;
