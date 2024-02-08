@@ -1,0 +1,30 @@
+{
+  "content": [
+    {
+      "companyName": "F1000",
+      "city": "Q1",
+      "name": "Q1",
+      "phoneNumber": "Q1",
+      "email": "Q1",
+      "instagram": "W1",
+      "id": "fbf7f1c9-078d-4e39-87d1-f4ac98d35ed8"
+    }
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 20,
+    "sort": [],
+    "offset": 0,
+    "unpaged": false,
+    "paged": true
+  },
+  "last": true,
+  "totalPages": 1,
+  "totalElements": 1,
+  "size": 20,
+  "number": 0,
+  "sort": [],
+  "first": true,
+  "numberOfElements": 1,
+  "empty": false
+}

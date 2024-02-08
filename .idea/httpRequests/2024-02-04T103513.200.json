@@ -1,0 +1,30 @@
+{
+  "content": [
+    {
+      "companyName": "F1",
+      "city": "Tashkent",
+      "name": "F2",
+      "phoneNumber": "+998976750812",
+      "email": "asrordev",
+      "instagram": "asrordev",
+      "id": "fbf7f1c9-078d-4e39-87d1-f4ac98d35ed8"
+    }
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 20,
+    "sort": [],
+    "offset": 0,
+    "unpaged": false,
+    "paged": true
+  },
+  "last": true,
+  "totalPages": 1,
+  "totalElements": 1,
+  "size": 20,
+  "number": 0,
+  "sort": [],
+  "first": true,
+  "numberOfElements": 1,
+  "empty": false
+}
