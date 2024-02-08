@@ -1,5 +1,7 @@
 package com.example.onefit.activity.dto;
 
+import com.example.onefit.course.dto.CourseResponseDto;
+import com.example.onefit.user.dto.UserResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +14,8 @@ import java.util.UUID;
 @Data
 public class ActivityDto {
 
-    private UUID course_id;
-    private UUID user_id;
+    private CourseResponseDto course;
+    private UserResponseDto user;
     private LocalDateTime startTime;
 
 }

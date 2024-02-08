@@ -4,6 +4,7 @@ import com.example.onefit.course.CourseRepository;
 import com.example.onefit.course.entity.Course;
 import com.example.onefit.location.LocationRepository;
 import com.example.onefit.location.entity.Location;
+import com.example.onefit.subscription.SubscriptionRepository;
 import com.example.onefit.user.UserRepository;
 import com.example.onefit.user.entity.User;
 import com.example.onefit.user.permission.PermissionRepository;
@@ -33,6 +34,7 @@ public class OneFitApplication implements CommandLineRunner {
     private final UserRepository userRepository;
     private final CourseRepository courseRepository;
     private final LocationRepository locationRepository;
+    private final SubscriptionRepository subscriptionRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(OneFitApplication.class, args);
@@ -44,6 +46,11 @@ public class OneFitApplication implements CommandLineRunner {
         createAdmin();
         createLocation();
        createCourses();
+        createSubscription();
+    }
+
+    private void createSubscription() {
+        subscriptionRepository.deleteAll();
     }
 
     private void createAdmin() {
