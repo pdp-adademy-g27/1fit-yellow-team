@@ -31,29 +31,36 @@ public class LikedService {
 
     private final LikedRepository likedRepository;
 
-    private final UserService userService;
+    private final UserRepository userRepository;
 
-    private final CourseService courseService;
+    private final CourseRepository courseRepository;
 
 
     public LikedResponseDto create_delete(LikedCreateDto likedCreateDto) {
         UUID course = likedCreateDto.getCourse();
         UUID user = likedCreateDto.getUser();
+
         Optional<Liked> existingLike = likedRepository
                 .findByCourse_IdAndAndUser_Id( course , user);
 
+        User existing_user = userRepository.findUserById(user)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+        Course existing_course = courseRepository.findCourseById(course)
+                .orElseThrow(() ->  new EntityNotFoundException("Course not found "));
 
-        UserResponseDto existing_user = userService.get(user);
 
-        CourseResponseDto existing_course = courseService.get(course);
+
         if (existingLike.isPresent()){
-              return new LikedResponseDto(existing_user , existing_course ,  "delete") ;
+            likedRepository.delete(existingLike.get());
+              return new LikedResponseDto( user , course ,  "delete") ;
         }
+
         else {
-            Liked entity = modelMapper.map(likedCreateDto, Liked.class);
+            Liked entity = new Liked(UUID.randomUUID() , existing_course , existing_user) ;
+
             likedRepository.save(entity);
 
-            return new LikedResponseDto(existing_user , existing_course , "create") ;
+            return new LikedResponseDto(user , course , "create") ;
         }
     }
 

@@ -46,14 +46,16 @@ ActivityService extends GenericService<Activity, UUID, ActivityResponseDto, Acti
         Integer days = user.getSubscription().getDays();
         Subscription subscription = user.getSubscription();
 
-        if(!isSubscriptionFinished(days , subscription.getStart_time())){
-              throw new IllegalArgumentException("Submission already expired") ;
-        }
-
         if(subscription.getStart_time() == null){
             subscription.setStart_time(LocalDateTime.now());
             subscriptionRepository.save(subscription) ;
         }
+
+        if(!isSubscriptionFinished(days , subscription.getStart_time())){
+              throw new IllegalArgumentException("Submission already expired") ;
+        }
+
+
 
         Activity entity = new Activity(UUID.randomUUID() , activityBeginDTO.getStartTime() ,
                 null , Collections.emptySet() , new HashSet<>(List.of(user)));
