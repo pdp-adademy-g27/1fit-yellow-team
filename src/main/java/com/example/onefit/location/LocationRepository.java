@@ -10,4 +10,7 @@ import java.util.UUID;
 
 @Repository
 public interface LocationRepository extends GenericRepository<Location, UUID> {
+
+
+
 }

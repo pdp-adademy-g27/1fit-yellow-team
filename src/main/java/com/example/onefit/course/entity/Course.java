@@ -27,29 +27,28 @@ public class Course {
     private String name;
     private String description;
 
-    @OneToOne(mappedBy = "course", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.REMOVE)
     private Location location;
 
     private boolean isFemale;
 
     @ElementCollection
     @CollectionTable(name = "course_images", joinColumns = @JoinColumn(name = "course_id"))
-    @Column(name = "image")
     private List<String> images;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "course_facilities",
             joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "facilities_id")
+            inverseJoinColumns = @JoinColumn(name = "facilities_id" )
     )
     private Set<Facilities> facilities;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "course_category",
             joinColumns = @JoinColumn(name = "course_id"),
@@ -59,12 +58,12 @@ public class Course {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany(mappedBy = "course",fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Rating> ratings;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "course_activity",
             joinColumns = @JoinColumn(name = "course_id"),
@@ -74,7 +73,7 @@ public class Course {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "course_liked",
             joinColumns = @JoinColumn(name = "course_id"),
@@ -84,7 +83,7 @@ public class Course {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "course_saved",
             joinColumns = @JoinColumn(name = "course_id"),

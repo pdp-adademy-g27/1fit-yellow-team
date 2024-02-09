@@ -5,6 +5,7 @@ import com.example.onefit.user.entity.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 import java.util.Set;
@@ -18,14 +19,10 @@ public class Liked {
     @Id
     private UUID id;
 
-    @ManyToMany(mappedBy = "likeds")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    private Set<Course> courses;
+    @ManyToOne
+    private Course course;
 
 
-    @ManyToMany(mappedBy = "likeds")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    private Set<User> users;
+    @ManyToOne
+    private  User user;
 }

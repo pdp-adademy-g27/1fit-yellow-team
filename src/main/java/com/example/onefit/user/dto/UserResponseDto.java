@@ -4,13 +4,16 @@ import com.example.onefit.activity.entity.Activity;
 import com.example.onefit.liked.entity.Liked;
 import com.example.onefit.rating.entity.Rating;
 import com.example.onefit.saved.entity.Saved;
+import com.example.onefit.subscription.dto.SubscriptionResponseDto;
 import com.example.onefit.user.role.dto.RoleResponseDto;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -19,6 +22,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserResponseDto extends UserBaseDto {
+
+    @NotBlank
     private UUID id;
     private Set<RoleResponseDto> roles;
     private Set<String> permissions;
@@ -26,6 +31,11 @@ public class UserResponseDto extends UserBaseDto {
     private Set<Rating> ratings;
     private Set<Liked> likeds;
     private Set<Saved> saveds;
+    private SubscriptionResponseDto subscription;
     private LocalDateTime created;
     private LocalDateTime updated;
+
+    public boolean hasValidSubscription(){
+        return Objects.nonNull(subscription);
+    }
 }

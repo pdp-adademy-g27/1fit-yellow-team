@@ -9,13 +9,11 @@ one-fit:
     retry-wait-time: 60 # in seconds
     retry-count: 3
     time-to-live: 300 # in seconds
-
   notification:
     sms:
-      eskiz:
-
+      eskiz: FMrOwoLPY38lu29ODuC4wIHvUX0yFmM3p8qNla9r
   security:
     token:
       expiration: 86400
-      secret: ZFwrxIeSMF3oKmMtUq8wCgfDVRnte68J5cRG7aE7eG6nLe2miQyM4We7J7yzME7w
+      secret: FMrOwoLPY38lu29ODuC4wIHvUX0yFmM3p8qNla9r
 

@@ -10,8 +10,7 @@ one-fit:
 
   notification:
     sms:
-      eskiz:
-
+      eskiz: FMrOwoLPY38lu29ODuC4wIHvUX0yFmM3p8qNla9r
   security:
     token:
       expiration: 86400

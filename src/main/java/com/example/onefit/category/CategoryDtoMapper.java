@@ -24,10 +24,10 @@ public class CategoryDtoMapper extends GenericMapper<Category , CategoryCreateDt
     @Override
     public CategoryResponseDto toResponseDto(Category category) {
 
-        CategoryResponseDto map = mapper.map(category, CategoryResponseDto.class);
+        CategoryResponseDto responseDto = mapper.map(category, CategoryResponseDto.class);
 
 
-        return null;
+        return responseDto;
     }
 
     @Override

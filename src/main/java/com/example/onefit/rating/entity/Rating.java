@@ -3,6 +3,8 @@ package com.example.onefit.rating.entity;
 import com.example.onefit.course.entity.Course;
 import com.example.onefit.user.entity.User;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.*;
 
 import java.util.UUID;
@@ -15,7 +17,10 @@ import java.util.UUID;
 public class Rating {
     @Id
     private UUID id;
+
+    @Min(0) @Max(10)
     private int star;
+
     private String comment;
 
     @ManyToOne

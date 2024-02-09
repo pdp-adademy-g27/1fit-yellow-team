@@ -29,6 +29,7 @@ public class LocationService extends GenericService<Location, UUID, LocationResp
 
         Location entity = mapper.toEntity(createDto);
 
+        entity.setId(UUID.randomUUID());
         repository.save(entity);
 
         return mapper.toResponseDto(entity);

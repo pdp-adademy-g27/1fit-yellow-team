@@ -3,7 +3,8 @@ package com.example.onefit.category.dto;
 
 import lombok.*;
 
-@Builder
+
+@NoArgsConstructor
 public class CategoryCreateDto extends CategoryBaseDto{
 
 

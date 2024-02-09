@@ -2,6 +2,7 @@ package com.example.onefit.facilities.entity;
 
 import com.example.onefit.course.entity.Course;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import lombok.*;

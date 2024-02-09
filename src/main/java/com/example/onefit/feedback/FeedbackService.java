@@ -14,11 +14,11 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Getter
-public class FeedBackService extends GenericService<Feedback, UUID, FeedBackResponseDto, FeedBackCreateDto,FeedBackUpdateDto> {
+public class FeedbackService extends GenericService<Feedback, UUID, FeedBackResponseDto, FeedBackCreateDto,FeedBackUpdateDto> {
 
-    private final FeedBackRepository repository;
+    private final FeedbackRepository repository;
     private final Class<Feedback> entityClass=Feedback.class;
-    private final FeedBackDtoMapper mapper;
+    private final FeedbackDtoMapper mapper;
 
 
     @Override

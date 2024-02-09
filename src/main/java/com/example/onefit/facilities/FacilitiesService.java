@@ -38,9 +38,16 @@ public class FacilitiesService extends GenericService<Facilities , String , Faci
                 () -> new EntityNotFoundException("Facility with name %s not found".formatted(name)));
 
 
-        mapper.toEntity(facilitiesUpdateDto, facilities);
-        Facilities saved = repository.save(facilities);
-        return mapper.toResponseDto(saved);
+    //    mapper.toEntity(facilitiesUpdateDto, facilities);
+
+
+        Facilities facility = new Facilities(facilitiesUpdateDto.getName() , facilitiesUpdateDto.getImage() , facilities.getCourses());
+
+        repository.delete(facilities);
+
+        repository.save(facility) ;
+
+        return mapper.toResponseDto(facility);
 
     }
 }

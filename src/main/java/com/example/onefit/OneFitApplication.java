@@ -1,5 +1,13 @@
 package com.example.onefit;
 
+import com.example.onefit.activity.ActivityRepository;
+import com.example.onefit.activity.entity.Activity;
+import com.example.onefit.course.CourseRepository;
+import com.example.onefit.course.entity.Course;
+import com.example.onefit.location.LocationRepository;
+import com.example.onefit.location.entity.Location;
+import com.example.onefit.subscription.SubscriptionRepository;
+import com.example.onefit.subscription.entity.Subscription;
 import com.example.onefit.user.UserRepository;
 import com.example.onefit.user.entity.User;
 import com.example.onefit.user.permission.PermissionRepository;
@@ -15,7 +23,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 @EnableJpaAuditing
@@ -26,15 +38,65 @@ public class OneFitApplication implements CommandLineRunner {
     private final PermissionRepository permissionRepository;
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
-
+    private final CourseRepository courseRepository;
+    private final LocationRepository locationRepository;
+    private final SubscriptionRepository subscriptionRepository;
+    private final ActivityRepository activityRepository;
+   private static final int target = 24;
     public static void main(String[] args) {
         SpringApplication.run(OneFitApplication.class, args);
+
     }
 
     @Override
     public void run(String... args) {
         createPermissions();
         createAdmin();
+        createCourses();
+        createSubscription();
+        checkActivityEndDate();
+    }
+
+    private void checkActivityEndDate() {
+        ScheduledExecutorService service = Executors.newScheduledThreadPool(1);
+        int hours = calculateDelayHours();
+
+        service.scheduleAtFixedRate(check_end_time() , hours , 24 , TimeUnit.HOURS ) ;
+
+    }
+
+    private Runnable check_end_time() {
+        return () -> {
+            List<Activity> activities = activityRepository.findAll();
+            for(Activity activity : activities) {
+                activity.setEndTime(activity.getEndTime().plusHours(2));
+            }
+            activityRepository.saveAll(activities) ;
+        };
+    }
+
+    private int calculateDelayHours(){
+
+        Calendar calendar  = Calendar.getInstance();
+        int delayHours = calendar.get(Calendar.HOUR_OF_DAY) ;
+
+        return OneFitApplication.target - delayHours;
+    }
+
+    private void createSubscription() {
+        subscriptionRepository.deleteAll();
+
+        List<Subscription> subscriptions = new ArrayList<>();
+
+        subscriptions.add(new Subscription(UUID.randomUUID() , 5 , 500_000d , "image 1" , false ,  Collections.emptyList() , null ));
+
+
+        subscriptions.add(new Subscription(UUID.randomUUID() , 90 , 2_690_000d , "image 1" , false , Collections.emptyList()  , null));
+        subscriptions.add(new Subscription(UUID.randomUUID() , 180 , 4_190_500d , "image 2" , false  ,  Collections.emptyList() , null));
+        subscriptions.add(new Subscription(UUID.randomUUID() , 365 , 5_590_000d , "image 3" , false  ,  Collections.emptyList() , null));
+
+
+        subscriptionRepository.saveAll(subscriptions);
     }
 
     private void createAdmin() {
@@ -70,7 +132,7 @@ public class OneFitApplication implements CommandLineRunner {
                     phoneNumber, email, passwordEncoder.encode("1"),
                     LocalDate.now(), Set.of(role), new HashSet<>(permissionRepository.findAll()),
                     Collections.emptySet(), Collections.emptySet(), Collections.emptySet(),
-                    Collections.emptySet(), null, null);
+                    Collections.emptySet(), null, null , null);
 
             userRepository.save(user);
         }
@@ -146,5 +208,30 @@ public class OneFitApplication implements CommandLineRunner {
 
         permissionRepository.saveAll(permissions);
     }
+
+
+    private void createCourses(){
+      courseRepository.deleteAll();
+
+        Location location1 = new Location(UUID.randomUUID() , "Tashkent" , "123" , "123" ) ;
+        Location location2 = new Location(UUID.randomUUID() , "Tashkent1" , "1233" , "1233") ;
+
+
+        locationRepository.save(location1);
+        locationRepository.save(location2);
+
+        List<Course> courses = new ArrayList<>();
+
+        courses.add(new Course(UUID.randomUUID() , "Swim" , "The best course" , location1 , false , List.of("1231231") , Collections.emptySet() ,
+                Collections.emptySet() , Collections.emptySet() , Collections.emptySet()  , Collections.emptySet() , Collections.emptySet(), LocalDateTime.now() , LocalDateTime.now()));
+
+        courses.add(new Course( UUID.randomUUID(), "Football" , "The best course" , location2 , true , List.of("1231478"),
+                Collections.emptySet() , Collections.emptySet() , Collections.emptySet() , Collections.emptySet() ,  Collections.emptySet()  , Collections.emptySet(), LocalDateTime.now() , LocalDateTime.now()));
+
+        courseRepository.saveAll(courses);
+    }
+
+
+
 
 }

@@ -22,15 +22,14 @@ public class LocationDtoMapper extends GenericMapper<Location, LocationCreateDto
 
     @Override
     public Location toEntity(LocationCreateDto locationCreateDto) {
+
         return mapper.map(locationCreateDto , Location.class);
     }
 
     @Override
     public LocationResponseDto toResponseDto(Location location) {
-        LocationResponseDto responseDto = mapper.map(location, LocationResponseDto.class);
 
-
-        return responseDto ;
+        return mapper.map(location, LocationResponseDto.class);
     }
 
     @Override

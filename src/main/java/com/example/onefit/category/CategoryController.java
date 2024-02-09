@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -21,7 +21,7 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-    @PreAuthorize("hasAuthority('category:create')")
+//    @PreAuthorize("hasAuthority('category:create')")
     @PostMapping
     public ResponseEntity<CategoryResponseDto> create(@RequestBody CategoryCreateDto createDto){
 
@@ -30,7 +30,7 @@ public class CategoryController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 
-    @PreAuthorize("hasAuthority('category:read')")
+//    @PreAuthorize("hasAuthority('category:read')")
     @GetMapping("/{name}")
     public ResponseEntity<CategoryResponseDto> get(@PathVariable String name){
 
@@ -39,7 +39,7 @@ public class CategoryController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @PreAuthorize("hasAuthority('category:read')")
+//    @PreAuthorize("hasAuthority('category:read')")
     @GetMapping
     public ResponseEntity<Page<CategoryResponseDto>> get(@RequestParam(required = false) String predicate , Pageable pageable){
 
@@ -48,7 +48,7 @@ public class CategoryController {
         return ResponseEntity.ok(responseDtos);
     }
 
-    @PreAuthorize("hasAuthority('category:update')")
+//    @PreAuthorize("hasAuthority('category:update')")
     @PutMapping("/{name}")
     public ResponseEntity<CategoryResponseDto> update(@PathVariable String name , @RequestBody CategoryUpdateDto updateDto){
 
@@ -57,7 +57,7 @@ public class CategoryController {
         return ResponseEntity.ok(update);
     }
 
-    @PreAuthorize("hasAuthority('category:delete')")
+//    @PreAuthorize("hasAuthority('category:delete')")
     @DeleteMapping("/{name}")
     public ResponseEntity<CategoryResponseDto> delete(@PathVariable String name){
 

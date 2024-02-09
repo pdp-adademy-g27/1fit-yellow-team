@@ -4,6 +4,7 @@ import com.example.onefit.activity.entity.Activity;
 import com.example.onefit.liked.entity.Liked;
 import com.example.onefit.rating.entity.Rating;
 import com.example.onefit.saved.entity.Saved;
+import com.example.onefit.subscription.entity.Subscription;
 import com.example.onefit.user.permission.entity.Permission;
 import com.example.onefit.user.role.entity.Role;
 import jakarta.persistence.*;
@@ -18,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -101,6 +103,10 @@ public class User implements UserDetails {
     @LastModifiedDate
     private LocalDateTime updated;
 
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Subscription subscription;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Stream<Permission> rolePermissionStream = roles.stream()
@@ -109,11 +115,13 @@ public class User implements UserDetails {
 
         Stream<Permission> permissionStream = Stream.concat(rolePermissionStream, permissions.stream());
 
-        Set<SimpleGrantedAuthority> collect = permissionStream
+        return permissionStream
                 .map(permission -> new SimpleGrantedAuthority(permission.getName()))
                 .collect(Collectors.toSet());
+    }
 
-        return collect;
+    public boolean hasValidSubscription(){
+        return Objects.nonNull(subscription);
     }
 
     @Override

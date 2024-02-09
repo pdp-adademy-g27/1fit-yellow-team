@@ -1,0 +1,42 @@
+{
+  "content": [
+    {
+      "days": null,
+      "price": 2690000.0,
+      "image": "image 1",
+      "id": "f0968a1d-071a-4a04-b7b2-4beb586387f8",
+      "popular": false
+    },
+    {
+      "days": null,
+      "price": 4190500.0,
+      "image": "image 2",
+      "id": "e669725c-a163-47e7-b183-5dcf813fd9dd",
+      "popular": false
+    },
+    {
+      "days": null,
+      "price": 5590000.0,
+      "image": "image 3",
+      "id": "d576744e-81fe-44ec-8a7b-6fe0e057dbf8",
+      "popular": false
+    }
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 20,
+    "sort": [],
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "last": true,
+  "totalElements": 3,
+  "totalPages": 1,
+  "size": 20,
+  "number": 0,
+  "sort": [],
+  "numberOfElements": 3,
+  "first": true,
+  "empty": false
+}

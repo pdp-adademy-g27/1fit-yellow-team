@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class SmsNotificationServiceImpl implements SmsNotificationService{
-    @Value("${leetcode.notification.sms.eskiz}")
+    @Value("${one-fit.notification.sms.eskiz}")
     private String token;
     private final EskizFeignClient eskizFeignClient;
     @Override

@@ -10,8 +10,6 @@ import java.time.LocalDateTime;
 @Data
 public class SubscriptionDto {
     private LocalDateTime days;
-    private LocalDateTime freezing_days;
     private Double price;
     private String image;
-    private boolean is_popular;
 }
