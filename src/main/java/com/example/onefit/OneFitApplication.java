@@ -1,5 +1,7 @@
 package com.example.onefit;
 
+import com.example.onefit.activity.ActivityRepository;
+import com.example.onefit.activity.entity.Activity;
 import com.example.onefit.course.CourseRepository;
 import com.example.onefit.course.entity.Course;
 import com.example.onefit.location.LocationRepository;
@@ -23,6 +25,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 @EnableJpaAuditing
@@ -36,9 +41,11 @@ public class OneFitApplication implements CommandLineRunner {
     private final CourseRepository courseRepository;
     private final LocationRepository locationRepository;
     private final SubscriptionRepository subscriptionRepository;
-
+    private final ActivityRepository activityRepository;
+   private static final int target = 24;
     public static void main(String[] args) {
         SpringApplication.run(OneFitApplication.class, args);
+
     }
 
     @Override
@@ -47,6 +54,33 @@ public class OneFitApplication implements CommandLineRunner {
         createAdmin();
         createCourses();
         createSubscription();
+        checkActivityEndDate();
+    }
+
+    private void checkActivityEndDate() {
+        ScheduledExecutorService service = Executors.newScheduledThreadPool(1);
+        int hours = calculateDelayHours();
+
+        service.scheduleAtFixedRate(check_end_time() , hours , 24 , TimeUnit.HOURS ) ;
+
+    }
+
+    private Runnable check_end_time() {
+        return () -> {
+            List<Activity> activities = activityRepository.findAll();
+            for(Activity activity : activities) {
+                activity.setEndTime(activity.getEndTime().plusHours(2));
+            }
+            activityRepository.saveAll(activities) ;
+        };
+    }
+
+    private int calculateDelayHours(){
+
+        Calendar calendar  = Calendar.getInstance();
+        int delayHours = calendar.get(Calendar.HOUR_OF_DAY) ;
+
+        return OneFitApplication.target - delayHours;
     }
 
     private void createSubscription() {
@@ -54,12 +88,12 @@ public class OneFitApplication implements CommandLineRunner {
 
         List<Subscription> subscriptions = new ArrayList<>();
 
-        subscriptions.add(new Subscription(UUID.randomUUID() , 5 , 500_000d , "image 1" , false ));
+        subscriptions.add(new Subscription(UUID.randomUUID() , 5 , 500_000d , "image 1" , false ,  Collections.emptyList() , null ));
 
 
-        subscriptions.add(new Subscription(UUID.randomUUID() , 90 , 2_690_000d , "image 1" , false ));
-        subscriptions.add(new Subscription(UUID.randomUUID() , 180 , 4_190_500d , "image 2" , false ));
-        subscriptions.add(new Subscription(UUID.randomUUID() , 365 , 5_590_000d , "image 3" , false ));
+        subscriptions.add(new Subscription(UUID.randomUUID() , 90 , 2_690_000d , "image 1" , false , Collections.emptyList()  , null));
+        subscriptions.add(new Subscription(UUID.randomUUID() , 180 , 4_190_500d , "image 2" , false  ,  Collections.emptyList() , null));
+        subscriptions.add(new Subscription(UUID.randomUUID() , 365 , 5_590_000d , "image 3" , false  ,  Collections.emptyList() , null));
 
 
         subscriptionRepository.saveAll(subscriptions);
@@ -98,7 +132,7 @@ public class OneFitApplication implements CommandLineRunner {
                     phoneNumber, email, passwordEncoder.encode("1"),
                     LocalDate.now(), Set.of(role), new HashSet<>(permissionRepository.findAll()),
                     Collections.emptySet(), Collections.emptySet(), Collections.emptySet(),
-                    Collections.emptySet(), null, null);
+                    Collections.emptySet(), null, null , null);
 
             userRepository.save(user);
         }
@@ -196,6 +230,8 @@ public class OneFitApplication implements CommandLineRunner {
 
         courseRepository.saveAll(courses);
     }
+
+
 
 
 }

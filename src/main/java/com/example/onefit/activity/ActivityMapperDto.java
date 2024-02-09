@@ -1,6 +1,6 @@
 package com.example.onefit.activity;
 
-import com.example.onefit.activity.dto.ActivityCreateDTO;
+import com.example.onefit.activity.dto.ActivityBeginDTO;
 import com.example.onefit.activity.dto.ActivityResponseDto;
 import com.example.onefit.activity.dto.ActivityUpdateDto;
 import com.example.onefit.activity.entity.Activity;
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class ActivityMapperDto extends GenericMapper<Activity, ActivityCreateDTO, ActivityResponseDto, ActivityUpdateDto> {
+public class ActivityMapperDto extends GenericMapper<Activity, ActivityBeginDTO, ActivityResponseDto, ActivityUpdateDto> {
     private final ModelMapper modelMapper;
     @Override
-    public Activity toEntity(ActivityCreateDTO activityCreateDTO) {
-        return modelMapper.map(activityCreateDTO,Activity.class);
+    public Activity toEntity(ActivityBeginDTO activityBeginDTO) {
+        return modelMapper.map(activityBeginDTO,Activity.class);
     }
 
     @Override

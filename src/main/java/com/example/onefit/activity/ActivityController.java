@@ -1,8 +1,10 @@
 package com.example.onefit.activity;
 
-import com.example.onefit.activity.dto.ActivityCreateDTO;
+import com.example.onefit.activity.dto.ActivityBeginDTO;
+import com.example.onefit.activity.dto.ActivityEndDto;
 import com.example.onefit.activity.dto.ActivityResponseDto;
 import com.example.onefit.activity.dto.ActivityUpdateDto;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,9 +21,15 @@ import java.util.UUID;
 public class ActivityController {
     private final ActivityService activityService;
   //  @PreAuthorize(value = "hasAuthority('activity:create')")
-    @PostMapping("/addActivity")
-    public ResponseEntity<ActivityResponseDto> create(@RequestBody ActivityCreateDTO activityCreateDTO){
-        ActivityResponseDto activityResponseDto = activityService.create(activityCreateDTO);
+    @PostMapping("/start")
+    public ResponseEntity<ActivityResponseDto> start(@RequestBody @Valid ActivityBeginDTO activityBeginDTO){
+        ActivityResponseDto activityResponseDto = activityService.create(activityBeginDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(activityResponseDto);
+    }
+
+    @PostMapping("/end")
+    public ResponseEntity<ActivityResponseDto> end(@RequestBody @Valid ActivityEndDto activityEndDto){
+        ActivityResponseDto activityResponseDto = activityService.end(activityEndDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(activityResponseDto);
     }
 
@@ -33,7 +41,7 @@ public class ActivityController {
 
   //  @PreAuthorize(value = "hasAuthority('activity:read')")
     @GetMapping("/{id}")
-    public ActivityResponseDto getId(@PathVariable UUID id){
+    public ActivityResponseDto get(@PathVariable UUID id){
        return activityService.get(id);
     }
 

@@ -16,4 +16,6 @@ public class OneFitExceptionHandler {
     public CommonResponse handleEarlyResentException(OtpException e) {
         return new CommonResponse(e.getMessage(), LocalDateTime.now(), HttpStatus.BAD_REQUEST.value());
     }
+
+
 }
