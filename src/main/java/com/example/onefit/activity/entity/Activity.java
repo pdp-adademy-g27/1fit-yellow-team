@@ -2,9 +2,7 @@ package com.example.onefit.activity.entity;
 
 import com.example.onefit.course.entity.Course;
 import com.example.onefit.user.entity.User;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,14 +24,10 @@ public class Activity {
         @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime endTime;
 
-        @ManyToMany(mappedBy = "activities")
-        @EqualsAndHashCode.Exclude
-        @ToString.Exclude
-        private Set<Course> courses;
+        @ManyToOne(fetch = FetchType.EAGER)
+        private Course course;
 
-        @ManyToMany(mappedBy = "activities")
-        @EqualsAndHashCode.Exclude
-        @ToString.Exclude
-        private Set<User> users;
+        @ManyToOne(fetch = FetchType.EAGER)
+        private User user;
 
 }

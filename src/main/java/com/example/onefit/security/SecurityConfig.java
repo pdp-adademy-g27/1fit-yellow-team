@@ -21,9 +21,9 @@ public class SecurityConfig {
                 .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         registry -> registry
-                                .requestMatchers("/user/auth/**" , "/course/**" , "/category/**" ,
+                                .requestMatchers("/user/auth/**"  , "/user/**", "/course/**" , "/category/**" ,
                                         "/location/**" , "/facilities/**" , "/activity/**" , "/feedback/**" ,
-                                        "/liked/**" , "/liked/**" , "/rating/**" , "/subscription/**" )
+                                        "/liked/**" , "/rating/**" , "/subscription/**" , "/saved/**" )
                                 .permitAll()
                                 .anyRequest().authenticated()
                 )

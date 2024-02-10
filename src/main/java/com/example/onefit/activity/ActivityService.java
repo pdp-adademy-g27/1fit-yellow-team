@@ -6,6 +6,8 @@ import com.example.onefit.activity.dto.ActivityResponseDto;
 import com.example.onefit.activity.dto.ActivityUpdateDto;
 import com.example.onefit.activity.entity.Activity;
 import com.example.onefit.common.service.GenericService;
+import com.example.onefit.course.CourseRepository;
+import com.example.onefit.course.entity.Course;
 import com.example.onefit.subscription.SubscriptionRepository;
 import com.example.onefit.subscription.entity.Subscription;
 import com.example.onefit.user.UserRepository;
@@ -32,12 +34,19 @@ ActivityService extends GenericService<Activity, UUID, ActivityResponseDto, Acti
     private final ActivityMapperDto mapper;
     private  final UserRepository userRepository;
     private final SubscriptionRepository subscriptionRepository;
+    private final CourseRepository courseRepository;
 
     @Override
     protected ActivityResponseDto internalCreate(ActivityBeginDTO activityBeginDTO) {
-        User user = userRepository.findUserById(activityBeginDTO.getUser()).orElseThrow(
+        User user = userRepository.findUserById(activityBeginDTO.getUser())
+                .orElseThrow(
                 () -> new EntityNotFoundException("User not found")
         );
+
+        Course course = courseRepository.findCourseById(activityBeginDTO.getCourse())
+                .orElseThrow(
+                        () -> new EntityNotFoundException("Course not found")
+                );
 
         if(!user.hasValidSubscription()){
              throw  new IllegalArgumentException("You must buy subscription! ") ;
@@ -57,8 +66,8 @@ ActivityService extends GenericService<Activity, UUID, ActivityResponseDto, Acti
 
 
 
-        Activity entity = new Activity(UUID.randomUUID() , activityBeginDTO.getStartTime() ,
-                null , Collections.emptySet() , new HashSet<>(List.of(user)));
+        Activity entity = new Activity(UUID.randomUUID() , LocalDateTime.now() ,
+                null , course , user);
         repository.save(entity) ;
         return mapper.toResponseDto(entity);
     }

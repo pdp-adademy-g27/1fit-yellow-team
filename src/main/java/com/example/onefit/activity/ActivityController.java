@@ -21,14 +21,14 @@ import java.util.UUID;
 public class ActivityController {
     private final ActivityService activityService;
   //  @PreAuthorize(value = "hasAuthority('activity:create')")
-    @PostMapping("/start")
-    public ResponseEntity<ActivityResponseDto> start(@RequestBody @Valid ActivityBeginDTO activityBeginDTO){
+    @PostMapping
+    public ResponseEntity<ActivityResponseDto> start(@RequestBody ActivityBeginDTO activityBeginDTO){
         ActivityResponseDto activityResponseDto = activityService.create(activityBeginDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(activityResponseDto);
     }
 
     @PostMapping("/end")
-    public ResponseEntity<ActivityResponseDto> end(@RequestBody @Valid ActivityEndDto activityEndDto){
+    public ResponseEntity<ActivityResponseDto> end(@RequestBody ActivityEndDto activityEndDto){
         ActivityResponseDto activityResponseDto = activityService.end(activityEndDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(activityResponseDto);
     }

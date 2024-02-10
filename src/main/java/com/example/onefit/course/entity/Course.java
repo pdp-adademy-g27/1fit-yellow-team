@@ -63,12 +63,7 @@ public class Course {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "course_activity",
-            joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "activity_id")
-    )
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Activity> activities;
 
     @EqualsAndHashCode.Exclude

@@ -2,10 +2,10 @@ package com.example.onefit.user;
 
 import com.example.onefit.common.exceptions.OtpException;
 import com.example.onefit.common.service.GenericService;
-import com.example.onefit.user.dto.UserCreateDto;
-import com.example.onefit.user.dto.UserResponseDto;
-import com.example.onefit.user.dto.UserSignInDto;
-import com.example.onefit.user.dto.UserUpdateDto;
+import com.example.onefit.subscription.SubscriptionRepository;
+import com.example.onefit.subscription.dto.SubscriptionResponseDto;
+import com.example.onefit.subscription.entity.Subscription;
+import com.example.onefit.user.dto.*;
 import com.example.onefit.user.entity.User;
 import com.example.onefit.user.otp.OtpRepository;
 import com.example.onefit.user.otp.entity.Otp;
@@ -31,6 +31,7 @@ public class UserService extends GenericService<User, UUID, UserResponseDto, Use
     private final UserDtoMapper mapper;
     private final OtpRepository otpRepository;
     private final PasswordEncoder passwordEncoder;
+    private final SubscriptionRepository subscriptionRepository;
 
     @Override
     protected UserResponseDto internalCreate(UserCreateDto userCreateDto) {
@@ -85,4 +86,21 @@ public class UserService extends GenericService<User, UUID, UserResponseDto, Use
                 .orElseThrow(() -> new EntityNotFoundException("User with phone number: %s not found".formatted(username)));
     }
 
+    public UserResponseDto buy(UserSubscriptionBuy userSubscriptionBuy) {
+        UUID userId = userSubscriptionBuy.getUserId();
+        UUID subscriptionId = userSubscriptionBuy.getSubscriptionId();
+
+        User userNotFound = repository.findUserById(userId).orElseThrow(() -> new EntityNotFoundException("User not found"));
+        Subscription subscription = subscriptionRepository.findById(subscriptionId).orElseThrow(() -> new EntityNotFoundException("Subscription not found"));
+
+        if(userNotFound.getSubscription() != null){
+            throw  new IllegalArgumentException("Usr already have subscription");
+        }
+
+        userNotFound.setSubscription(subscription);
+
+        User save = repository.save(userNotFound);
+
+        return mapper.toResponseDto(save) ;
+    }
 }

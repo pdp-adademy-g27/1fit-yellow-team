@@ -1,3 +1,352 @@
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "6e27d6c6-3d97-413c-b830-f8ed0ed79119",
+  "user": "ee38d539-0b5b-442b-a805-e3777b19d275"
+}
+
+###
+
+POST http://localhost:8080/user/buy/subscription
+Content-Type: application/json
+Content-Length: 114
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "userId": "ee38d539-0b5b-442b-a805-e3777b19d275",
+  "subscriptionId": "6f711fe5-6be4-4d7b-905b-5066b060aae9"
+}
+
+<> 2024-02-10T090911.201.json
+
+###
+
+POST http://localhost:8080/user/buy/subscription
+Content-Type: application/json
+Content-Length: 114
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "userId": "3be9a9ed-4d8a-4e55-864f-e68ad157e11a",
+  "subscriptionId": "80ac06d9-bc09-4f22-bc76-da8afae040f9"
+}
+
+###
+
+POST http://localhost:8080/user/buy/subscription
+Content-Type: application/json
+Content-Length: 114
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "userId": "3be9a9ed-4d8a-4e55-864f-e68ad157e11a",
+  "subscriptionId": "80ac06d9-bc09-4f22-bc76-da8afae040f9"
+}
+
+###
+
+POST http://localhost:8080/user/buy/subscription
+Content-Type: application/json
+Content-Length: 114
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "userId": "cafd3948-315d-4f82-8bbb-2c1d2343c11a",
+  "subscriptionId": "2cf12075-efdd-4774-bc6e-439a07720951"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "91232bc9-ad99-473c-9ca5-c64eb8134bea",
+  "user": "5faa9a94-0446-494d-aed3-8b7c33ec03c1"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "91232bc9-ad99-473c-9ca5-c64eb8134bea",
+  "user": "5faa9a94-0446-494d-aed3-8b7c33ec03c1"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "91232bc9-ad99-473c-9ca5-c64eb8134bea",
+  "user": "5faa9a94-0446-494d-aed3-8b7c33ec03c1"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "91232bc9-ad99-473c-9ca5-c64eb8134bea",
+  "user": "5faa9a94-0446-494d-aed3-8b7c33ec03c1"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "91232bc9-ad99-473c-9ca5-c64eb8134bea",
+  "user": "5faa9a94-0446-494d-aed3-8b7c33ec03c1"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "91232bc9-ad99-473c-9ca5-c64eb8134bea",
+  "user": "5faa9a94-0446-494d-aed3-8b7c33ec03c1"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "91232bc9-ad99-473c-9ca5-c64eb8134bea",
+  "user": "5faa9a94-0446-494d-aed3-8b7c33ec03c1"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "91232bc9-ad99-473c-9ca5-c64eb8134bea",
+  "user": "5faa9a94-0446-494d-aed3-8b7c33ec03c1"
+}
+
+###
+
+GET http://localhost:8080/activity/getAll
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-10T004118.200.json
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "91232bc9-ad99-473c-9ca5-c64eb8134bea",
+  "user": "5faa9a94-0446-494d-aed3-8b7c33ec03c1"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "d9f2233d-85a5-4a3f-a80f-4ee38088f1ea",
+  "user": "f08df0e8-7fe1-4982-80ef-7cd07df0dea4"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "d9f2233d-85a5-4a3f-a80f-4ee38088f1ea",
+  "user": "f08df0e8-7fe1-4982-80ef-7cd07df0dea4"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "d9f2233d-85a5-4a3f-a80f-4ee38088f1ea",
+  "user": "f08df0e8-7fe1-4982-80ef-7cd07df0dea4"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "d9f2233d-85a5-4a3f-a80f-4ee38088f1ea",
+  "user": "f08df0e8-7fe1-4982-80ef-7cd07df0dea4"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "d9f2233d-85a5-4a3f-a80f-4ee38088f1ea",
+  "user": "f08df0e8-7fe1-4982-80ef-7cd07df0dea4"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "d9f2233d-85a5-4a3f-a80f-4ee38088f1ea",
+  "user": "f08df0e8-7fe1-4982-80ef-7cd07df0dea4"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "d9f2233d-85a5-4a3f-a80f-4ee38088f1ea",
+  "user": "f08df0e8-7fe1-4982-80ef-7cd07df0dea4"
+}
+
+###
+
+POST http://localhost:8080/activity
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "d9f2233d-85a5-4a3f-a80f-4ee38088f1ea",
+  "user": "f08df0e8-7fe1-4982-80ef-7cd07df0dea4"
+}
+
+###
+
+POST http://localhost:8080/liked
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "d9f2233d-85a5-4a3f-a80f-4ee38088f1ea",
+  "user": "f08df0e8-7fe1-4982-80ef-7cd07df0dea4"
+}
+
+<> 2024-02-10T002923.201.json
+
+###
+
+POST http://localhost:8080/activity/start
+Content-Type: application/json
+Content-Length: 104
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "course": "d9f2233d-85a5-4a3f-a80f-4ee38088f1ea",
+  "user": "f08df0e8-7fe1-4982-80ef-7cd07df0dea4"
+}
+
+###
+
 GET http://localhost:8080/activity/getAll
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)

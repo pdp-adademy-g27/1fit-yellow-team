@@ -14,6 +14,5 @@ import java.util.UUID;
 @Data
 public class ActivityEndDto {
 
-    @NotBlank
     private UUID id;
 }

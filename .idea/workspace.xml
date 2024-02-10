@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1dadd478-d621-40d8-bca7-1f9407b9d2a9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/common/qr_code/QR_Code.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/user/dto/UserSubscriptionBuy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/810bf4af-5e33-42d1-a291-c0a9a4d09fa9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/810bf4af-5e33-42d1-a291-c0a9a4d09fa9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/810bf4af-5e33-42d1-a291-c0a9a4d09fa9/storage_v2/_src_/database/one_fit.uMZEsQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/810bf4af-5e33-42d1-a291-c0a9a4d09fa9/storage_v2/_src_/database/one_fit.uMZEsQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onefit/activity/ActivityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/activity/ActivityController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onefit/activity/ActivityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/activity/ActivityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onefit/liked/LikedService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/liked/LikedService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onefit/liked/dto/LikedResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/liked/dto/LikedResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onefit/activity/dto/ActivityDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/activity/dto/ActivityDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onefit/activity/dto/ActivityEndDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/activity/dto/ActivityEndDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onefit/activity/dto/ActivityResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/activity/dto/ActivityResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onefit/activity/entity/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/activity/entity/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onefit/course/entity/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/course/entity/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onefit/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onefit/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onefit/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onefit/user/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +77,8 @@
     "HTTP Request.generated-requests | #2.executor": "Run",
     "HTTP Request.generated-requests | #3.executor": "Run",
     "HTTP Request.generated-requests | #4.executor": "Run",
+    "HTTP Request.generated-requests | #5.executor": "Run",
+    "HTTP Request.generated-requests | #7.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -102,7 +117,10 @@
     <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" requestIdentifier="#4" runType="Run single request">
+    <configuration name="generated-requests | #5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="5" requestIdentifier="#5" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #7" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="7" requestIdentifier="#7" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="OneFitApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -114,10 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.generated-requests | #3" />
         <item itemvalue="HTTP Request.generated-requests | #2" />
         <item itemvalue="HTTP Request.generated-requests | #1" />
-        <item itemvalue="HTTP Request.generated-requests | #4" />
-        <item itemvalue="HTTP Request.generated-requests | #3" />
+        <item itemvalue="HTTP Request.generated-requests | #7" />
+        <item itemvalue="HTTP Request.generated-requests | #5" />
       </list>
     </recent_temporary>
   </component>
@@ -141,7 +160,8 @@
       <workItem from="1707148610564" duration="8202000" />
       <workItem from="1707405083827" duration="18174000" />
       <workItem from="1707462621062" duration="76000" />
-      <workItem from="1707464187305" duration="10868000" />
+      <workItem from="1707464187305" duration="14186000" />
+      <workItem from="1707530671721" duration="3583000" />
     </task>
     <servers />
   </component>

@@ -2,10 +2,9 @@ package com.example.onefit.user;
 
 import com.example.onefit.common.response.CommonResponse;
 import com.example.onefit.security.JwtService;
-import com.example.onefit.user.dto.UserCreateDto;
-import com.example.onefit.user.dto.UserResponseDto;
-import com.example.onefit.user.dto.UserSignInDto;
-import com.example.onefit.user.dto.ValidatePhoneNumberRequestDto;
+import com.example.onefit.subscription.dto.SubscriptionCreateDto;
+import com.example.onefit.subscription.dto.SubscriptionResponseDto;
+import com.example.onefit.user.dto.*;
 import com.example.onefit.user.otp.OtpService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +29,12 @@ public class UserController {
             @RequestBody @Valid ValidatePhoneNumberRequestDto validatePhoneNumberRequestDto) {
         CommonResponse commonResponse = otpService.sendSms(validatePhoneNumberRequestDto);
         return ResponseEntity.ok(commonResponse);
+    }
+
+    @PostMapping("/buy/subscription")
+    public ResponseEntity<UserResponseDto> buy(@RequestBody UserSubscriptionBuy userSubscriptionBuy){
+        UserResponseDto userResponseDto = userService.buy(userSubscriptionBuy);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userResponseDto);
     }
 
     @PostMapping("/auth/sign-up")
